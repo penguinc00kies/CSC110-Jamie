@@ -38,6 +38,7 @@ def is_much_greater(num1: int, num2: int) -> bool:
     >>> is_much_greater(5, 3)
     False
     """
+    return num1 >= num2 * 2
 
 
 def make_course_label(code: str, title: str) -> str:
@@ -51,6 +52,7 @@ def make_course_label(code: str, title: str) -> str:
     >>> make_course_label('PSY100', 'Introductory Psychology')
     'PSY100: Introductory Psychology'
     """
+    return code + ': ' + title
 
 
 def sum_in_list(num1: float, num2: float, lst: list) -> bool:
@@ -61,6 +63,7 @@ def sum_in_list(num1: float, num2: float, lst: list) -> bool:
     >>> sum_in_list(-10.1, 23.6, [])
     False
     """
+    return (num1 + num2) in lst
 
 
 def multiply_sums(set1: set, set2: set) -> int:
@@ -73,6 +76,7 @@ def multiply_sums(set1: set, set2: set) -> int:
     >>> multiply_sums({0, -1, -2}, {0, 1, 2})
     -9
     """
+    return sum(set1) * sum(set2)
 
 
 def sum_of_values_two(key1: str, key2: str, numbers: dict) -> int:
@@ -87,6 +91,7 @@ def sum_of_values_two(key1: str, key2: str, numbers: dict) -> int:
     >>> sum_of_values_two('b', 'b', numbers)
     20
     """
+    return numbers[key1] + numbers[key2]
 
 
 def sum_of_values_many(keys: set, numbers: dict) -> int:
@@ -106,6 +111,7 @@ def sum_of_values_many(keys: set, numbers: dict) -> int:
     This is the trickiest problem in this sequence, so please ask for help if you get
     stuck!
     """
+    return sum(numbers[key] for key in keys)
 
 
 ###############################################################################

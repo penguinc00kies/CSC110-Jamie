@@ -13,3 +13,4 @@ print({x for x in range(30, 51)})
 set1 = {1, 2, 3}
 set2 = {4, 5, 6}
 print({(x,y) for x in set1 for y in set2})
+print({-x for x in set1})

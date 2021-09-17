@@ -29,3 +29,4 @@ def negate(numbers: set[float]) -> dict[float, float]:
     True
     """
     # TODO: Complete this function body.  Use comprehensions not loops.
+    return {x: x * -1 for x in numbers}

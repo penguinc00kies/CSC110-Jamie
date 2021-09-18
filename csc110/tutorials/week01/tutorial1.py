@@ -133,6 +133,7 @@ my
     Pick some colours from https://en.wikipedia.org/wiki/Web_colors#Extended_colors
     (take RGB values from the "Decimal" column).
     """
+    return [(255, 250, 205), (218, 165,  32), (100, 149, 237), (32, 178, 170), (0, 255, 127), (255, 0, 255)]
 
 
 def stripes(colour1: tuple, colour2: tuple, n: int) -> list:
@@ -141,6 +142,7 @@ def stripes(colour1: tuple, colour2: tuple, n: int) -> list:
     >>> stripes((64, 224, 208), (100, 100, 100), 3)
     [(64, 224, 208), (100, 100, 100), (64, 224, 208), (100, 100, 100), (64, 224, 208), (100, 100, 100)]
     """
+    return [colour1, colour2] * n
 
 
 def rgb_combinations(nums: set) -> list:
@@ -149,6 +151,7 @@ def rgb_combinations(nums: set) -> list:
     >>> rgb_combinations({10, 150})
 
     """
+    return [(x, y, z) for x in nums for y in nums for z in nums]
 
 
 def colours_to_grayscale(colours: list) -> list:
@@ -161,6 +164,7 @@ def colours_to_grayscale(colours: list) -> list:
     >>> colours_to_grayscale(colours)
     [(43, 43, 43), (200, 200, 200)]
     """
+    return [(sum(colours[x])//3, sum(colours[x]) // 3, sum(colours[x]) // 3) for x in range(len(colours))]
 
 
 def gradient(colour0: tuple, colour1: tuple, n: int) -> list:
@@ -169,6 +173,8 @@ def gradient(colour0: tuple, colour1: tuple, n: int) -> list:
     >>> gradient((10, 20, 100), (70, 80, 10), 3)
     [(10, 20, 100), (30, 40, 70), (50, 60, 40), (70, 80, 10)]
     """
+    return [(colour0[0] + int((x/n) * (colour1[0] - colour0[0])), colour0[1] + int((x / n) * (colour1[1] - colour0[1])),
+             colour0[2] + int((x / n) * (colour1[2] - colour0[2]))) for x in range(n+1)]
 
 
 def waves(colour1: tuple, colour2: tuple, n: int) -> list:
@@ -176,3 +182,8 @@ def waves(colour1: tuple, colour2: tuple, n: int) -> list:
 
     (Experiment with different numbers for the gradient length.)
     """
+    return ([(colour1[0] + int((x / n) * (colour2[0] - colour1[0])), colour1[1] + int((x / n) * (colour2[1] - colour1[1])),
+         colour1[2] + int((x / n) * (colour2[2] - colour1[2]))) for x in range(n)] + [(colour2[0] + int((x / n) *
+         (colour1[0] - colour2[0])), colour2[1] + int((x / n) * (colour1[1] - colour2[1])), colour2[2] + int((x / n) *
+         (colour1[2] - colour2[2]))) for x in range(n)]) * n
+

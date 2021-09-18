@@ -47,11 +47,9 @@ def total_slices(num_pizzas: int, slices_per_pizza: int) -> int:
 
     >>> total_slices(5, 8)  # 5 pizzas with 8 slices per pizza
     40
-    >>> # TODO: write another doctest example
     >>> total_slices(0, 6)
-    6
+    0
     """
-    # TODO: Complete this function body.
     return num_pizzas * slices_per_pizza
 
 
@@ -68,13 +66,11 @@ def scale_grade(original_grade: float, multiplier: float, bonus: float) -> float
 
     >>> scale_grade(60.0, 1.2, 10.0)  # 60.0 * 1.2 = 72.0, and 72.0 + 10.0 = 82.0
     82.0
-    >>> # TODO: write another doctest example
     >>> scale_grade(50.0, 2.0, 5.0)
     100.0
 
     HINT: one of the max or min functions is useful.
     """
-    # TODO: Complete this function body.
     return min(100.0, original_grade * multiplier + bonus)
 
 
@@ -87,7 +83,6 @@ def first_characters(strings: set) -> set:
     >>> letters = first_characters({'David', 'is', 'cool'})
     >>> letters == {'D', 'i', 'c'}
     True
-    >>> # TODO: write another doctest example (follow the same format as the given one)
     >>> initials = first_characters({'John', 'Alexander', 'Macdonald'})
     >>> initials == {'J', 'A', 'M'}
     True
@@ -96,7 +91,6 @@ def first_characters(strings: set) -> set:
     You may also need to review Section 1.3 for how to extract a single character
     from a string.
     """
-    # TODO: Complete this function body.
     return {word[0] for word in strings}
 
 
@@ -111,15 +105,13 @@ def scale_grades(original_grades: list, multiplier: float, bonus: float) -> list
 
     >>> scale_grades([10.0, 20.2], 1.5, 3.0)
     [18.0, 33.3]
-    >>> # TODO: write another doctest example
-    >>> scale_grades([43.7, 88.0], 1.1, 2.0)
-    [50.07, 98.8]
+    >>> scale_grades([43.9, 88.0], 1.3, 2.0)
+    [59.07, 100.0]
 
     HINT: use a list comprehension, and call your scale_grade function on each
     original grade.
     """
-    # TODO: Complete this function body.
-    return [grade * multiplier + bonus for grade in original_grades]
+    return [min(100.0, grade * multiplier + bonus) for grade in original_grades]
 
 
 def word_lengths(text: str) -> dict:
@@ -133,7 +125,6 @@ def word_lengths(text: str) -> dict:
     >>> result = word_lengths('David is   cool')
     >>> result == {'David': 5, 'is': 2, 'cool': 4}
     True
-    >>> # TODO: write another doctest example (follow the same format as the given one)
     >>> initials = word_lengths('John Alexander Macdonald')
     >>> initials == {'John': 4, 'Alexander': 9, 'Macdonald': 9}
     True
@@ -146,7 +137,6 @@ def word_lengths(text: str) -> dict:
            Store the resulting value in a variable.
         2. Use a dictionary comprehension on the result of Step 1.
     """
-    # TODO: Complete this function body.
     words = str.split(text)
     return {words[x]: len(words[x]) for x in range(len(words))}
 

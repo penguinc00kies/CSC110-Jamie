@@ -15,14 +15,13 @@ def add_two(x: int) -> int:
 def add_to_list(lst: list, item: str) -> list:
     """Append str to the start of lst
 
-    # >>> add_to_list(['milk'], 'cereal')
+    >>> add_to_list(['milk'], 'cereal')
     ['cereal', 'milk']
     """
     placeholder_list = [item]
     lst = placeholder_list + lst
     return lst
 
-"""
 x = 7
 print('Inside:', add_two(x))
 print('Outside:', x)
@@ -30,8 +29,3 @@ print()
 lst = ['jam']
 print('Inside:', add_to_list(lst, 'peanut butter'))
 print('Outside:', lst)
-"""
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()

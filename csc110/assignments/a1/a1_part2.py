@@ -48,12 +48,21 @@ def find_roots_quadratic(a: float, b: float, c: float) -> set:
       - (b * b) - (4 * a * c) >= 0
 
     Hint: use the quadratic formula.
+    >>> find_roots_quadratic(2.0, 2.0, -12.0) == {-3.0, 2.0}
+    True
     """
+    root_one = ((-1.0 * b) + math.sqrt((b * b) - (4 * a * c))) / (2 * a)
+    root_two = ((-1.0 * b) - math.sqrt((b * b) - (4 * a * c))) / (2 * a)
+    return {root_one, root_two}
 
 
 def intersect_all(set1: set, set2: set, set3: set) -> set:
     """Return the intersection of all three of the given sets: set1, set2, and set3.
+
+    >>> intersect_all({1, 2, 3}, {3, 4, 5}, {2, 3, 4}) == {3}
+    True
     """
+    return set.intersection(set1, set2, set3)
 
 
 def greet_all(greeting: str, names: list) -> list:
@@ -70,7 +79,10 @@ def greet_all(greeting: str, names: list) -> list:
 
     >>> greet_all('Good morning', ['Alan Turing', 'Grace Hopper'])
     ['Good morning, Alan Turing', 'Good morning, Grace Hopper']
+    >>> greet_all('Salutations', ['Eli Manning', 'Alex Ovechkin', 'Pelé'])
+    ['Salutations, Eli Manning', 'Salutations, Alex Ovechkin', 'Salutations, Pelé']
     """
+    return [greeting + ', ' + x for x in names]
 
 
 def all_smaller(nums1: set, nums2: set) -> bool:
@@ -82,7 +94,10 @@ def all_smaller(nums1: set, nums2: set) -> bool:
       - nums1 and nums2 contain only integers and/or floats
 
     Hint: use the min and max functions.
+    >>> all_smaller({2.3, 0.8, 5}, {100.1, 2, 0.7})
+    False
     """
+    return max(nums1) < min(nums2)
 
 
 if __name__ == '__main__':

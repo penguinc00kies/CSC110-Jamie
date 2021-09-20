@@ -84,7 +84,7 @@ def calculate_angles(side_a: float, side_b: float, side_c: float) -> tuple:
 # TODO: Given a set of strings, calculate the length of the longest string.
 def longest_length(strings: set) -> int:
     """Returns the longest length of a string in the set strings
-    
+
     >>> longest_length({'University', 'of', 'Toronto'})
     10
     >>> longest_length({'John', 'Alexander', 'Macdonald'})

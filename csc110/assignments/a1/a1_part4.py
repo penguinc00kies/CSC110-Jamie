@@ -29,6 +29,7 @@ def maximize_channels(old_pixel: tuple, value: int) -> tuple:
     >>> maximize_channels(example_pixel, 128)
     (128, 128, 155)
     """
+    return tuple([])
 
 
 def divide_channels(old_pixel: tuple, denominator: int) -> tuple:

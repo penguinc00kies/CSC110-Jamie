@@ -57,7 +57,7 @@ def student_average(grades: list) -> float:
     sorted_grades = sorted(grades)
 
     # These are the weights for the assignment grades
-    weights = [0.4, 0.35, 0.25]
+    weights = [0.25, 0.35, 0.4]
 
     return (
         weights[0] * sorted_grades[0] +
@@ -83,7 +83,7 @@ def test_section_average_all_grades_equal() -> None:
 def test_class_average_no_grades_equal() -> None:
     """Test class_average when every grade is different.
     """
-    grades = [['60.0', '70.0', '75.0'], ['80.0', '65.0', '85.0']]
+    grades = [[60.0, 70.0, 75.0], [80.0, 65.0, 85.0]]
 
     expected = 73.875
     actual = class_average(grades)

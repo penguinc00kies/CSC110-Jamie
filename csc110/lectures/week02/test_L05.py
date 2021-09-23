@@ -31,6 +31,6 @@ def test_check_lengths_one_string_greater_than() -> None:
 
     assert actual == expected
 
-#if name
-    #import pytest
-    #pytest
+if __name__ == '__main__':
+    import pytest
+    pytest.main(['test_L05.py'])

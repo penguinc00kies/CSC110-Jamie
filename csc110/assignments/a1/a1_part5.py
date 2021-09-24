@@ -18,6 +18,7 @@ please consult our Course Syllabus.
 
 This file is Copyright (c) 2021 Mario Badr and Tom Fairgrieve.
 """
+import statistics
 from statistics import median
 
 import a1_image
@@ -87,6 +88,10 @@ def separate_colour_channels(rgb_pixels: list) -> dict:
     'b': [128, 65, 68, 43, 42, 45, 82, 92, 23, 23, 19, 29, 128, 128, 82, 34]}
     True
     """
+    red = [rgb_pixels[x][0] for x in range(len(rgb_pixels))]
+    green = [rgb_pixels[x][1] for x in range(len(rgb_pixels))]
+    blue = [rgb_pixels[x][2] for x in range(len(rgb_pixels))]
+    return {'r': red, 'g': green, 'b': blue}
 
 
 def calculate_median_colour(colour_channels: dict) -> tuple:
@@ -102,6 +107,7 @@ def calculate_median_colour(colour_channels: dict) -> tuple:
     >>> calculate_median_colour(separated_colour_channels)
     (38, 71, 55)
     """
+    return tuple((int(statistics.median(colour_channels[x])) for x in colour_channels))
 
 
 def apply_median_filter(pixel_data: list, image_width: int, image_height: int) -> list:
@@ -141,8 +147,8 @@ if __name__ == '__main__':
 
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (Delete the "#" and space before each line.)
-    import python_ta
-    python_ta.check_all(config={
-        'extra-imports': ['statistics', 'a1_image'],
-        'max-line-length': 100
-    })
+    # import python_ta
+    # python_ta.check_all(config={
+    #     'extra-imports': ['statistics', 'a1_image'],
+    #     'max-line-length': 100
+    # })

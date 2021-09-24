@@ -15,3 +15,5 @@ set2 = {4, 5, 6}
 print({(x,y) for x in set1 for y in set2})
 print({-x for x in set1})
 print([x for x in range(5, -1, -1)])
+dix = {'grapes': 5.99, 'pears': 13.99}
+print([dix[x] for x in dix])

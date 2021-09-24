@@ -129,28 +129,23 @@ def rock_paper_scissors(player1: str, player2: str) -> str:
     >>> rock_paper_scissors('rock', 'rock')
     'Tie!'
     """
-    if player1 = player2
-    if player1 == 'rock':
+    if player1 == player2:
+        return 'Tie!'
+    elif player1 == 'rock':
         if player2 == 'scissors':
             return 'Player1 wins'
-        elif player2 == 'paper':
-            return 'Player2 wins'
         else:
-            return 'Tie!'
+            return 'Player2 wins'
     elif player1 == 'paper':
         if player2 == 'rock':
             return 'Player1 wins'
-        elif player2 == 'scissors':
-            return 'Player2 wins'
         else:
-            return 'Tie!'
+            return 'Player2 wins'
     else:
         if player2 == 'paper':
             return 'Player1 wins'
-        elif player2 == 'rock':
-            return 'Player2 wins'
         else:
-            return 'Tie!'
+            return 'Player2 wins'
 
     # if player1 == 'rock' and player2 == 'scissors':
     # elif player1 == 'paper' and player2 == 'rock':

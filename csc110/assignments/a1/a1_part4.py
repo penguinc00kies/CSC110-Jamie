@@ -29,7 +29,7 @@ def maximize_channels(old_pixel: tuple, value: int) -> tuple:
     >>> maximize_channels(example_pixel, 128)
     (128, 128, 155)
     """
-    return tuple([])
+    return tuple([max(x, value) for x in old_pixel])
 
 
 def divide_channels(old_pixel: tuple, denominator: int) -> tuple:
@@ -40,6 +40,7 @@ def divide_channels(old_pixel: tuple, denominator: int) -> tuple:
     >>> divide_channels(example_pixel, 2)
     (50, 6, 77)
     """
+    return tuple([x // denominator for x in old_pixel])
 
 
 def add_pepper(pixel_data: list, k: int) -> list:
@@ -59,6 +60,9 @@ def add_pepper(pixel_data: list, k: int) -> list:
 
     Because of the randomness, we can't specify an exact doctest.
     """
+    probability_list = [300] + [1] * k
+    new_pixel_data = [divide_channels(x, random.choice(probability_list)) for x in pixel_data]
+    return new_pixel_data
 
 
 def add_salt(pixel_data: list, k: int) -> list:
@@ -78,6 +82,9 @@ def add_salt(pixel_data: list, k: int) -> list:
 
     Because of the randomness, we can't specify an exact doctest.
     """
+    probability_list = [255] + [0] * k
+    new_pixel_data = [maximize_channels(x, random.choice(probability_list)) for x in pixel_data]
+    return list(new_pixel_data)
 
 
 def add_salt_and_pepper(pixel_data: list, k: int) -> list:
@@ -89,6 +96,8 @@ def add_salt_and_pepper(pixel_data: list, k: int) -> list:
 
     Because of the randomness, we can't specify an exact doctest.
     """
+    new_pixel_data = add_salt(add_pepper(pixel_data, k), k)
+    return new_pixel_data
 
 
 def run_salt_and_pepper_example(source: str, destination: str, k: int) -> None:
@@ -109,8 +118,8 @@ if __name__ == '__main__':
 
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (Delete the "#" and space before each line.)
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'extra-imports': ['random', 'a1_image'],
-    #     'max-line-length': 100
-    # })
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['random', 'a1_image'],
+        'max-line-length': 100
+    })

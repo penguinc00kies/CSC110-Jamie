@@ -36,6 +36,7 @@ def num_differing_characters(s1: str, s2: str) -> int:
     HINT: you can use range(0, len(s1)) in a comprehension to get the indexes
     where s1 and s2 differ.
     """
+    return sum([1 for x in range(0, len(s1)) if s1[x] != s2[x]])
 
 
 def is_suggestion(s1: str, s2: str) -> bool:
@@ -51,6 +52,10 @@ def is_suggestion(s1: str, s2: str) -> bool:
     >>> is_suggestion('tre', 'tree')
     False
     """
+    # if (any([s2 == x for x in tutorial2_words.WORDS])):
+    #    return len(s1) == len(s2)
+    # return False
+    return len(s1) == len(s2) and num_differing_characters(s1, s2) <= 1
 
 
 def get_suggestions(s: str) -> list:
@@ -71,6 +76,7 @@ def get_suggestions(s: str) -> list:
     Hint: you can use "for word in tutorial2_words.WORDS" in a comprehension to access the
     different valid English words.
     """
+    return sorted([x for x in tutorial2_words.WORDS if is_suggestion(s, x)])
 
 
 def autocorrect_word(s: str) -> str:
@@ -87,6 +93,11 @@ def autocorrect_word(s: str) -> str:
     >>> autocorrect_word('hiiiii')
     'hiiiii'
     """
+    if s in tutorial2_words.WORDS:
+        return s
+    elif get_suggestions(s) != []:
+        return get_suggestions(s)[0]
+    return s
 
 
 def autocorrect_words(words: list) -> list:
@@ -100,6 +111,7 @@ def autocorrect_words(words: list) -> list:
     >>> autocorrect_words(['you', 'tre', 'zool'])
     ['you', 'are', 'cool']
     """
+    return [autocorrect_word(x) for x in words]
 
 
 def autocorrect_text(text: str) -> str:
@@ -126,6 +138,7 @@ def autocorrect_text(text: str) -> str:
           >>> str.join(' ', ['David', 'is', 'cool'])
           'David is cool'
     """
+    return str.join(' ', autocorrect_words(str.split(text)))
 
 
 if __name__ == '__main__':

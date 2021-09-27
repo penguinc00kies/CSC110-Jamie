@@ -49,7 +49,6 @@ def same_at_index(s1: str, s2: str, index: int) -> bool:
     This assumes that index is >= 0 and a valid index for both s1 and s2.
 
     Preconditions:
-      - # TODO: complete the preconditions
       - index >= 0
       - len(s1) - 1 >= index and len(s2) - 1 >= index
 
@@ -58,7 +57,6 @@ def same_at_index(s1: str, s2: str, index: int) -> bool:
     >>> same_at_index('Hi', 'Bye', 0)
     False
     """
-    # TODO: complete this function body
     return s1[index] == s2[index]
 
 
@@ -73,7 +71,6 @@ def bigger_max(nums1: set, nums2: set) -> set:
     type. For example, isinstance(3, int) is True, and isinstance('hi', int) is False.
 
     Preconditions:
-      - # TODO: complete the preconditions
       - len(nums1) > 0
       - len(nums2) > 0
       - all(isinstance(x, int) for x in nums1)
@@ -86,12 +83,10 @@ def bigger_max(nums1: set, nums2: set) -> set:
     >>> bigger_max({1, 2, 3}, {1, 3})
     {1, 2, 3}
     """
-    # TODO: complete this function body
     if max(nums1) >= max(nums2):
         return nums1
     else:
         return nums2
-
 
 
 def lookup_with_backup(mapping: dict, key: object, backup_key: object) -> object:
@@ -107,7 +102,6 @@ def lookup_with_backup(mapping: dict, key: object, backup_key: object) -> object
     for the type of the keys or corresponding values in map.
 
     Preconditions:
-      - # TODO: complete the preconditions
       - key in mapping or backup_key in mapping
 
     >>> example_dict = {'Burger': 5.0, 'Fries': 3.0}
@@ -116,7 +110,6 @@ def lookup_with_backup(mapping: dict, key: object, backup_key: object) -> object
     >>> lookup_with_backup(example_dict, 'Cheeseburger', 'Burger')
     5.0
     """
-    # TODO: complete this function body
     if key in mapping:
         return mapping[key]
     else:
@@ -133,9 +126,9 @@ if __name__ == '__main__':
 
     # When you are ready, uncomment the following lines to check
     # your work with PythonTA.
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'extra-imports': ['python_ta.contracts'],
-    #     'max-line-length': 100,
-    #     'disable': ['R1705']
-    # })
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['python_ta.contracts'],
+        'max-line-length': 100,
+        'disable': ['R1705']
+    })

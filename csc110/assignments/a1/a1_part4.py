@@ -118,8 +118,8 @@ if __name__ == '__main__':
 
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (Delete the "#" and space before each line.)
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'extra-imports': ['random', 'a1_image'],
-    #     'max-line-length': 100
-    # })
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['random', 'a1_image'],
+        'max-line-length': 100
+    })

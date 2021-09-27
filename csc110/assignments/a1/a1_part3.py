@@ -107,3 +107,12 @@ def test_class_average_many_students() -> None:
 
 if __name__ == '__main__':
     pytest.main(['a1_part3.py', '-v'])
+
+    # When you are ready to check your work with python_ta, uncomment the following lines.
+    # (Delete the "#" and space before each line.)
+    import python_ta
+
+    python_ta.check_all(config={
+        'extra-imports': ['math'],
+        'max-line-length': 100
+    })

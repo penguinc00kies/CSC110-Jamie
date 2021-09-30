@@ -53,6 +53,7 @@ def bigger_max(nums1: set[int], nums2: set[int]) -> set[int]:
 
 # def tuples (tuple1: tuple[int], tuple2: tuple[int, int], tuple3: [int, int, int]) these all mean
 # diferent things
+# but only a tuple needs a type annotation for each element
 
 
 if __name__ == '__main__':

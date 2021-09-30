@@ -105,7 +105,7 @@ def is_valid_data(data: list[list]) -> bool:
     property_1 = all([len(row) == 4 for row in data])
 
     if not property_1:
-        return false
+        return False
 
     property_2 = all([isinstance(row[0], int) and row[0] > 0 for row in data])
     property_3 = all([row[1] in {'TO', 'ET', 'NY', 'SC'} for row in data])
@@ -137,11 +137,27 @@ def civic_centre_meets_threshold(data: list[list], civic_centre: str, num: int) 
         - data satisfies all of the properties described in Exercise 2
         - civic_centre in {'TO', 'NY', 'ET', 'SC'}
 
-    >>>
+    >>> marriage_data = create_small_sample_data()
+    >>> civic_centre_meets_threshold(marriage_data, 'NY', 200)
+    False
 
     HINT: you'll need to use a list comprehension with a filter.
     """
     return all([row[2] >= num for row in data if row[1] == civic_centre])
+
+
+def total_licenses_for_centre(data: list[list], civic_centre: str) -> int:
+    """Return the total number of licenses issued by civic_centre in data
+
+    Preconditions:
+        - data satisfies all of the properties described in Exercise 2
+
+    >>> marriage_data = create_small_sample_data()
+    >>> total_licenses_for_centre(marriage_data, 'ET')
+    189
+
+    """
+    return sum([row[2] for row in data if row[1] == civic_centre])
 
 
 def summarize_licences_by_centre(data: list[list]) -> dict[str, int]:
@@ -157,6 +173,8 @@ def summarize_licences_by_centre(data: list[list]) -> dict[str, int]:
     number of licences issued for a given civic centre as a parameter,
     e.g. total_licenses_for_centre(data, civic_centre).
     """
+    return {'TO': total_licenses_for_centre(data, 'TO'), 'NY': total_licenses_for_centre(data, 'NY'),
+            'ET': total_licenses_for_centre(data, 'ET'), 'SC': total_licenses_for_centre(data, 'SC')}
 
 
 ####################################################################################################
@@ -167,6 +185,7 @@ def issued_licences_by_year(data: list[list], year: int) -> int:
 
     Preconditions:
         - data satisfies all of the properties described in Exercise 2
+
     """
     return sum([row[2] for row in data if row[3].year == year])
 
@@ -176,7 +195,13 @@ def only_first_days(data: list[list]) -> bool:
 
     Preconditions:
         - data satisfies all of the properties described in Exercise 2
+
+    >>> marriage_data = create_small_sample_data()
+    >>> only_first_days(marriage_data)
+    True
+
     """
+    return all([row[3].day == 1 for row in data])
 
 
 def issued_licenses_in_range(data: list[list], start: datetime.date, end: datetime.date) -> int:
@@ -186,5 +211,10 @@ def issued_licenses_in_range(data: list[list], start: datetime.date, end: dateti
         - data satisfies all of the properties described in Exercise 2
         - end > start
 
+    >>> marriage_data = create_small_sample_data()
+    >>> issued_licenses_in_range(marriage_data, datetime.date(2011, 1, 1), datetime.date(2011, 1, 31))
+    742
+
     HINT: You can use <, <=, >, and >= to compare date values chronologically.
     """
+    return sum([row[2] for row in data if start <= row[3] <= end])

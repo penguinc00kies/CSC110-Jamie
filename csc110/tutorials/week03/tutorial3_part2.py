@@ -33,6 +33,7 @@ def is_cd(d: int, m: int, n: int) -> bool:
     >>> is_cd(3, 10, 6)
     False
     """
+    return divides(d, m) and divides(d, n)
 
 
 def is_gcd(d: int, m: int, n: int) -> bool:
@@ -50,6 +51,7 @@ def is_gcd(d: int, m: int, n: int) -> bool:
     for m and n. Note that gcd(x, 0) = abs(x) for all x, since every number
     divides 0.
     """
+    return gcd(m, n) == d
 
 
 def gcd(m: int, n: int) -> int:
@@ -70,22 +72,35 @@ def gcd(m: int, n: int) -> int:
     for m and n. Note that gcd(x, 0) = abs(x) for all x, since every number
     divides 0.
     """
+    if m == 0 and n == 0:
+        return 0
+    else:
+        return max({x for x in range(0, max(abs(m), abs(n)) + 1) if divides(x, m) and divides(x, n)})
 
 
+# you can also write integers(-100, 100)
+@given(m=integers(min_value=-100, max_value=100), n=integers(min_value=-100, max_value=100))
 def test_a(m: int, n: int) -> None:
-    """Test that..."""
+    """Test that one is a common denominator of any two integers."""
+    assert is_gcd(1, m, n) or (m == 0 and n == 0)
 
 
+@given(m=integers(min_value=-100, max_value=100), n=integers(min_value=-100, max_value=100))
 def test_b(m: int, n: int) -> None:
-    """Test that..."""
+    """Test that either m and n are both 0 or gcd(m, n) is always greater than or equal to 1."""
+    assert (m == 0 and n == 0) or gcd(m, n) >= 1
 
 
+@given(m=integers(min_value=-100, max_value=100), n=integers(min_value=-100, max_value=100))
 def test_c(m: int, n: int) -> None:
-    """Test that..."""
+    """Test that gcd(m, n) as d in is_gcd(d, m, n) will always return true."""
+    assert is_gcd(gcd(m, n), m, n) == True
 
 
+@given(m=integers(min_value=-100, max_value=100), n=integers(min_value=-100, max_value=100))
 def test_d(m: int, n: int) -> None:
-    """Test that..."""
+    """Test that the gcd of 2m and 2n is always equal to 2 * gcd(m, n)"""
+    assert gcd(2*m, 2*n) == 2*gcd(m,n)
 
 
 if __name__ == '__main__':
@@ -94,5 +109,5 @@ if __name__ == '__main__':
     doctest.testmod(verbose=True)
 
     # Uncomment the next two lines when you are ready to run the property-based tests.
-    # import pytest
-    # pytest.main(['tutorial3_part2.py'])
+    import pytest
+    pytest.main(['tutorial3_part2.py'])

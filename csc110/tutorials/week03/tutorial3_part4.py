@@ -96,6 +96,8 @@ def str_to_date(date_string: str) -> datetime.date:
     >>> str_to_date('01/01/2014')
     datetime.date(2014, 1, 1)
     """
+    day = str.split(date_string)
+    return datetime.date(int(date_string[2]), int(date_string[0]), int(date_string[1]))
 
 
 def str_to_time(time_string: str) -> datetime.time:

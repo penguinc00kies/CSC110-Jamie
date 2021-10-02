@@ -19,7 +19,7 @@ import csv
 import datetime
 
 
-def read_csv_file(filename: str) -> tuple[list[str], list[list[str]]]:
+def read_csv_file(filename: str) -> tuple[list[str], list[list]]:
     """Return the headers and data stored in a csv file with the given filename.
 
     The return value is a tuple consisting of two elements:
@@ -50,7 +50,7 @@ def read_csv_file(filename: str) -> tuple[list[str], list[list[str]]]:
         # This list comprehension reads each remaining row of the file,
         # where each row is represented as a list of strings.
         # The header row is *not* included in this list.
-        data = [row for row in reader]
+        data = [process_row(row) for row in reader]
 
     return (headers, data)
 
@@ -68,16 +68,16 @@ def process_row(row: list[str]) -> list:
         - row has the correct format for the TTC subway delay data set
     """
     return [
-        ...,  # date
-        ...,  # time
-        ...,  # day
-        ...,  # station
-        ...,  # code
-        ...,  # min delay
-        ...,  # min gap
-        ...,  # bound
-        ...,  # line
-        ...  # vehicle
+        str_to_date(row[0]),  # date
+        str_to_time(row[1]),  # time
+        row[2],  # day
+        row[3],  # station
+        row[4],  # code
+        int(row[5]),  # min delay
+        int(row[6]),  # min gap
+        row[7],  # bound
+        row[8],  # line
+        int(row[9])  # vehicle
     ]
 
 
@@ -96,8 +96,8 @@ def str_to_date(date_string: str) -> datetime.date:
     >>> str_to_date('01/01/2014')
     datetime.date(2014, 1, 1)
     """
-    day = str.split(date_string)
-    return datetime.date(int(date_string[2]), int(date_string[0]), int(date_string[1]))
+    day = str.split(date_string, '/')
+    return datetime.date(int(day[2]), int(day[0]), int(day[1]))
 
 
 def str_to_time(time_string: str) -> datetime.time:
@@ -111,6 +111,8 @@ def str_to_time(time_string: str) -> datetime.time:
     >>> str_to_time('00:21')
     datetime.time(0, 21)
     """
+    time = str.split(time_string, ':')
+    return datetime.time(int(time[0]), int(time[1]))
 
 
 ###############################################################################
@@ -122,6 +124,7 @@ def longest_delay(data: list[list]) -> int:
     Preconditions:
     - data is in the format of the TTC subway delays csv file
     """
+    return max([x[5] for x in data])
 
 
 def average_delay(data: list[list]) -> float:
@@ -130,6 +133,7 @@ def average_delay(data: list[list]) -> float:
     Preconditions:
     - data is in the format of the TTC subway delays csv file
     """
+    return sum([x[5] for x in data]) / len(data)
 
 
 def num_delays_by_month(data: list[list], year: int, month: int) -> int:
@@ -140,6 +144,7 @@ def num_delays_by_month(data: list[list], year: int, month: int) -> int:
     - 0 <= month < 12
     - 2014 <= year <= 2018
     """
+    return len([x for x in data if x[0].year == year and x[0].month == month])
 
 
 def delays_by_cause(data: list[list]) -> dict[str, int]:

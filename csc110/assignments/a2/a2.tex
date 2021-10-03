@@ -1,0 +1,175 @@
+\documentclass[fontsize=11pt]{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+
+\title{CSC110 Fall 2021 Assignment 2: Logic, Constraints, and Nested Data}
+\author{TODO: FILL IN YOUR NAME HERE}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Part 1: Predicate Logic}
+
+\begin{enumerate}
+
+\item[1.]
+    \begin{enumerate}
+        \item[1.] TODO: Write your answer and justification here.
+        \item[2.] TODO: Write your answer and justification here.
+        \item[3.] TODO: Write your answer and justification here.
+    \end{enumerate}
+
+\item[2.]
+    \begin{enumerate}
+        \item[1.] TODO: Write your definition for $P(x)$ here.
+        \item[2.] TODO: Write your definition for $Q(x)$ here.
+    \end{enumerate}
+   TODO: Briefly justify your response here.
+
+\item[3.]
+Complete this part in the provided \texttt{a2\_part1.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\item[4.]
+Complete this part in the provided \texttt{a2\_part1.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\end{enumerate}
+
+\section*{Part 2: Conditional Execution}
+
+Complete this part in the provided \texttt{a2\_part2.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\newpage
+
+\section*{Part 3: Generating a Timetable}
+
+\begin{enumerate}
+
+\item[1.]
+Complete this part in the provided \texttt{a2\_part3.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\item[2.]
+
+\begin{enumerate}
+\item[(a)]
+
+\emph{IMPORTANT DEFINITIONS/NOTATION} (don't change this text!)
+
+We define the following sets:
+
+\begin{itemize}
+\item $C$: the set of all possible courses
+\item $S$: the set of all possible sections
+\item $M$: the set of all possible meeting times
+\item $SC$: the set of all possible schedules
+\end{itemize}
+
+We also define the following notation for expressions involving the elements of these sets:
+
+\begin{itemize}
+\item
+The first three (courses/sections/meeting times) are represented as tuples (as described in the assignment handout), and you can use the indexing operation on these values. For example, you could translate ``every section term is in $\{'F', 'S', 'Y'\}$'' into predicate logic as the statement:
+
+    \[\forall s \in S,~ s[1] \in \{'F', 'S', 'Y' \} \]
+
+\item
+The start and end times of a meeting time can be compared chronologically using the standard $<$, $\leq$, $>$, and $\geq$ operators.
+
+\item
+For a section $s \in S$, $s[2]$ represents a tuple of meeting times.
+You may use standard set operations and quantifiers for these tuples (pretend they are sets).
+For example, we can say:
+
+    \begin{itemize}
+    \item $\forall s \in S,~ s[2] \subseteq M$
+    \item $\forall s \in S,~ \forall m \in s[2],~ m[1] < m[2]$
+    \end{itemize}
+
+\item
+Finally, for a schedule $sc \in SC$, you can use the notation $sc.sections$ to refer to a set of all sections in that schedule.
+You can use quantifiers with that set of schedules as well, e.g.
+$\forall s \in sc.sections,~ ...$
+\end{itemize}
+
+\textbf{Predicate for meeting times conflicting:}
+% TODO: fill in the predicate definition for two meeting times conflicting
+
+\begin{align*}
+MeetingTimesConflict(m_1, m_2) : TODO
+\qquad \text{where $m_1, m_2 \in M$}
+\end{align*}
+
+\smallskip
+
+\textbf{Predicate for sections conflicting:}
+% TODO: fill in the predicate definition for two sections conflicting.
+% Use the MeetingTimesConflict predicate in your response.
+
+\begin{align*}
+SectionsConflict(s_1, s_2) : TODO
+\qquad \text{where $s_1, s_2 \in S$}
+\end{align*}
+
+\smallskip
+
+\textbf{Predicate for valid schedule:}
+% TODO: fill in the predicate definition for a schedule being valid.
+% Use the SectionsConflict predicate in your response.
+
+\begin{align*}
+IsValidSchedule(sc) : TODO
+\qquad \text{where $sc \in SC$}
+\end{align*}
+
+
+\item[(b)]
+Complete this part in the provided \texttt{a2\_part3.py} starter file.
+Do \textbf{not} include your solution in this file.
+\end{enumerate}
+
+\item[3.]
+
+\begin{enumerate}
+\item[(a)]
+
+You may use all notation from question 2(a).
+Note that a course $c \in C$ is a tuple, and $c[2]$ is a set of sections, and so can be quantified over: $\forall s \in c[2], ...$.
+
+\smallskip
+
+\textbf{Predicate for section-schedule compatibility:}
+% TODO: fill in the predicate definition for a section being compatible with a schedule.
+
+\begin{align*}
+IsCompatibleSection(sc, s) : TODO
+\qquad \text{where $sc \in SC, s \in S$}
+\end{align*}
+
+\smallskip
+
+\textbf{Predicate for course-schedule compatibility:}
+% TODO: fill in the predicate definition for a course being compatible with a schedule.
+% Use IsCompatibleSection in your response.
+
+\begin{align*}
+IsCompatibleCourse(sc, c) : TODO
+\qquad \text{where $sc \in SC, c \in C$}
+\end{align*}
+
+\item[(b)]
+Complete this part in the provided \texttt{a2\_part3.py} starter file.
+Do \textbf{not} include your solution in this file.
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{Part 4: Processing Raw Data}
+Complete this part in the provided \texttt{a2\_part4.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\end{document}

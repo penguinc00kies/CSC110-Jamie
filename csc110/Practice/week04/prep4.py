@@ -32,6 +32,10 @@ from dataclasses import dataclass
 @dataclass
 class Person:
     """A person with some basic demographic information.
+
+    Representation Invariants:
+        - self.age >= 0
+
     """
     given_name: str
     family_name: str

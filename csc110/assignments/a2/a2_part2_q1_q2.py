@@ -34,6 +34,10 @@ This file is Copyright (c) 2021 David Liu, Mario Badr, and Tom Fairgrieve.
 ###############################################################################
 def mystery_1a_flat(x: int, y: set[int]) -> str:
     """Return the same value as mystery_1a_nested, but using just a single if statement."""
+    if x > 1 and sum({n ** 2 for n in y}) >= 10:
+        return 'Mario'
+    else:
+        return 'David'
 
 
 def mystery_1b_flat(n: int, rows_of_nums: list[list[int]]) -> int:

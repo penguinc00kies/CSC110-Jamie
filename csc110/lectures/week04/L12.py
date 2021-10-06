@@ -280,6 +280,16 @@ def sum_davids(scores: dict[str, int]) -> int:
     return sum_of_scores
 
 
+def sum_marios(scores: dict[str, int]) -> int:
+    """Return the sum of all values in scores that correspond to a key that contains 'David'."""
+    sum_of_scores = 0
+    for key in scores:
+        if 'Mario' in key:
+            sum_of_scores = sum_of_scores + scores[key]
+
+    return sum_of_scores
+
+
 def david_vs_mario(scores: dict[str, int]) -> str:
     """Return the name of the person with the highest total score in scores.
 
@@ -290,3 +300,8 @@ def david_vs_mario(scores: dict[str, int]) -> str:
     to a key that contains the string 'Mario'.
     """
     davids_score = sum_davids(scores)
+    marios_score = sum_marios(scores)
+    if davids_score >= marios_score:
+        return 'David'
+    else:
+        return 'Mario'

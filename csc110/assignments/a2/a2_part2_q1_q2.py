@@ -42,6 +42,16 @@ def mystery_1a_flat(x: int, y: set[int]) -> str:
 
 def mystery_1b_flat(n: int, rows_of_nums: list[list[int]]) -> int:
     """Return the same value as mystery_1b_nested, but using just a single if statement."""
+    if (n >= len(rows_of_nums) or n <= 0) and len(rows_of_nums) > 20:
+        return 20
+    elif (n >= len(rows_of_nums) or n <= 0) and len(rows_of_nums) <= 20:
+        return n
+    elif n == 1:
+        return 0
+    elif n in rows_of_nums[n]:
+        return sum(rows_of_nums[n]) + n
+    else:
+        return sum(rows_of_nums[0])
 
 
 ###############################################################################
@@ -49,14 +59,18 @@ def mystery_1b_flat(n: int, rows_of_nums: list[list[int]]) -> int:
 ###############################################################################
 def mystery_2a_no_if(x: int, y: int, z: set[int]) -> bool:
     """Return the same value as mystery_2a_if, but without using any if statements."""
+    return (x >= y and x in z) or (x < y and x not in z and y not in z)
 
 
 def mystery_2b_no_if(n: int) -> bool:
     """Return the same value as mystery_2b_if, but without using any if statements."""
+    return (n % 2 == 0 and n % 3 == 1) or (n % 2 == 1 and ((n <= 4 and n < 0) or
+                                                           (n > 4 and n % 3 != 1)))
 
 
 def mystery_2c_no_if(c1: int, c2: int, c3: int) -> bool:
     """Return the same value as mystery_2c_if, but without using any if statements."""
+    return not (c1 == c2) and ((c1 > c2 or c1 < c2) and c3 > c2)
 
 
 if __name__ == '__main__':

@@ -88,21 +88,119 @@ def mystery_3c(c1: float, c2: float, c3: float) -> int:
 def test_mystery_3a_1() -> None:
     """Test mystery_3a for an expected return value of 1."""
     expected = 1
-    actual = mystery_3a(..., ..., ...)  # TODO: fill in the arguments, then delete this TODO
+    actual = mystery_3a('Grape', 'Grape', 'Grape')  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3a_2() -> None:
+    """Test mystery_3a for an expected return value of 1."""
+    expected = 2
+    actual = mystery_3a('Grape', 'Grape', 'Apple')  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3a_3() -> None:
+    """Test mystery_3a for an expected return value of 1."""
+    expected = 3
+    actual = mystery_3a('Apple', 'Grape', 'Grape')  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3a_4() -> None:
+    """Test mystery_3a for an expected return value of 1."""
+    expected = 4
+    actual = mystery_3a('Grape', 'Apple', 'Grape')  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3a_5() -> None:
+    """Test mystery_3a for an expected return value of 1."""
+    expected = 5
+    actual = mystery_3a('Grape', 'Apple', 'Pear')  # TODO: fill in the arguments, then delete this TODO
     assert actual == expected
 
 
 def test_mystery_3b_1() -> None:
     """Test mystery_3b for an expected return value of 1."""
     expected = 1
-    actual = mystery_3b(..., ..., ...)  # TODO: fill in the arguments, then delete this TODO
+    actual = mystery_3b(3, 2, 1)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3b_2() -> None:
+    """Test mystery_3b for an expected return value of 1."""
+    expected = 2
+    actual = mystery_3b(3, 2, 3)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3b_3() -> None:
+    """Test mystery_3b for an expected return value of 1."""
+    expected = 3
+    actual = mystery_3b(1, 2, 3)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3b_4() -> None:
+    """Test mystery_3b for an expected return value of 1."""
+    expected = 4
+    actual = mystery_3b(1, 2, 1)  # TODO: fill in the arguments, then delete this TODO
     assert actual == expected
 
 
 def test_mystery_3c_1() -> None:
     """Test mystery_3c for an expected return value of 1."""
     expected = 1
-    actual = mystery_3c(..., ..., ...)  # TODO: fill in the arguments, then delete this TODO
+    actual = mystery_3c(1.0, 3.0, 3.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_2() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 2
+    actual = mystery_3c(1.0, 3.0, 2.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_3() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 3
+    actual = mystery_3c(1.0, 5.0, 5.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_4() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 4
+    actual = mystery_3c(1.0, 5.0, 2.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_5() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 5
+    actual = mystery_3c(-1.0, -1.0, -1.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_6() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 6
+    actual = mystery_3c(-1.0, 1.0, 1.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_7() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 7
+    actual = mystery_3c(-1.0, 1.0, -1.0)  # TODO: fill in the arguments, then delete this TODO
+    assert actual == expected
+
+
+def test_mystery_3c_8() -> None:
+    """Test mystery_3c for an expected return value of 1."""
+    expected = 8
+    actual = mystery_3c(-1.0, 0.0, 0.0)  # TODO: fill in the arguments, then delete this TODO
     assert actual == expected
 
 

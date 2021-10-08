@@ -132,6 +132,18 @@ def test_num_lecture_hours() -> None:
 
 
 # TODO: Create more tests
+def test_sections_in_semester() -> None:
+    """
+    Test num_lecture_hours with a sample schedule
+    """
+    assert a2_courses.sections_in_semester(SCHEDULE_3, 'F') == {CSC110_LEC0101, MAT137_LEC0201}
+
+
+def test_sections_in_semester_empty() -> None:
+    """
+    Test num_lecture_hours with a sample schedule
+    """
+    assert a2_courses.sections_in_semester({}, 'S') == set()
 
 ###################################################################################################
 # Part 3 Question 2

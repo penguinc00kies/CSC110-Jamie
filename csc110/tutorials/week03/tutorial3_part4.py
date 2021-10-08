@@ -166,6 +166,9 @@ def delays_by_cause(data: list[list]) -> dict[str, int]:
         an element appears in a list. (This is a bit inefficient, though,
         and we'll learn about a better approach next week.)
     """
+    unique_codes = [x[4] for x in data]
+    unique_codes = {x for x in unique_codes}
+    maximum = max([sum([1 for y in unique_codes if y == x]) for x in unique_codes])
 
 
 def sorted_delays_by_cause(cause_map: dict[str, int]) -> list[tuple[int, str]]:

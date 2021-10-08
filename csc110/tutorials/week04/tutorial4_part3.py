@@ -100,6 +100,8 @@ def print_squares(n: int) -> None:
     16
     25
     """
+    for i in range(1, n + 1):
+        print(i ** 2)
 
 
 def print_emoticons(n: int) -> None:
@@ -120,6 +122,9 @@ def print_emoticons(n: int) -> None:
     HINT: we've given you a variable emoticons to refer to the list of emoticons.
     If you're using a loop variable i, you can compute the remainder (i % 4)...
     """
+    emoticons = [':-)', '>.<', '^_^', '(/â—•ãƒ®â—•)/']
+    for i in range(0, n):
+        print(emoticons[i % 4])
 
 
 def number_grid(n: int) -> None:
@@ -144,6 +149,10 @@ def number_grid(n: int) -> None:
         1. Use a nested loop to print each number on a single line, and repeat that n times.
         2. Use one loop that calls another function from this file...
     """
+    for i in range(0, n):
+        for j in range(0, n):
+            print(j + 1, end='')
+        print()
 
 
 def heart_box(n: int) -> None:
@@ -162,6 +171,12 @@ def heart_box(n: int) -> None:
         - Creating a string of n â™¥ characters using string repetition.
     """
     # You can copy-and-paste the â™¥ character into a string literal in your code.
+    # for i in range(0, 2 * n):
+    #     print('â™¥' * 3)
+    for i in range(0, 2 * n):
+        for j in range(0, n):
+            print('â™¥', end='')
+        print()
 
 
 def catcade(n: int) -> None:
@@ -178,6 +193,8 @@ def catcade(n: int) -> None:
         - Creating a string of repeated ðŸ˜¸ characters using string repetition.
     """
     # You can copy-and-paste the ðŸ˜¸ character into a string literal in your code.
+    for i in range(n, 0, -1):
+        print('ðŸ˜¸' * i)
 
 
 ###############################################################################
@@ -189,7 +206,15 @@ def pygame_demo() -> None:
     (You'll be modifying this function as you follow the demo in the tutorial handout.
     """
     with pygame_surface() as screen:
-        pygame.draw.circle(screen, (255, 189, 213), (100, 100), 75)
+        pygame.draw.circle(screen, (245, 179, 66), (400, 400), 400)
+
+        pygame.draw.line(screen, (0, 0, 0), (0, 100), (800, 100), 2)
+        pygame.draw.line(screen, (0, 0, 0), (0, 200), (800, 200), 4)
+        pygame.draw.line(screen, (0, 0, 0), (0, 300), (800, 300), 6)
+        pygame.draw.line(screen, (0, 0, 0), (0, 400), (800, 400), 8)
+        pygame.draw.line(screen, (0, 0, 0), (0, 500), (800, 500), 10)
+        pygame.draw.line(screen, (0, 0, 0), (0, 600), (800, 600), 12)
+        pygame.draw.line(screen, (0, 0, 0), (0, 700), (800, 700), 14)
 
 
 ###############################################################################
@@ -197,6 +222,11 @@ def pygame_demo() -> None:
 ###############################################################################
 def four_circles() -> None:
     """Draw four circles with sides touching in each quadrant of the screen, any colour."""
+    with pygame_surface() as screen:
+        pygame.draw.circle(screen, (245, 179, 66), (200, 200), 200)
+        pygame.draw.circle(screen, (3, 252, 173), (600, 200), 200)
+        pygame.draw.circle(screen, (191, 67, 144), (200, 600), 200)
+        pygame.draw.circle(screen, (86, 157, 219), (600, 600), 200)
 
 
 def sixteen_circles() -> None:
@@ -209,6 +239,9 @@ def circle_grid(n: int) -> None:
     Preconditions:
         - n >= 1
     """
+    radius = 800 / n
+    for i in range(1, n + 1):
+        x_coord = (800 / n) * i
 
 
 def gridlines(n: int) -> None:

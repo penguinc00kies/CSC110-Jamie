@@ -36,11 +36,18 @@ def monkeys_in_barrel(barrel: List[str]) -> int:
     >>> monkeys_in_barrel(['monkey', 'David', 'monkey'])
     2
     """
-    breakpoint()
+    # breakpoint()
+    # for item in barrel:
+    #     if item == 'monkey':
+    #         monkey_count_so_far = monkey_count_so_far + 1
+    # return monkey_count_so_far
+    # Missing initial assignment statement for monkey_count_so_far
+    monkey_count_so_far = 0
     for item in barrel:
         if item == 'monkey':
             monkey_count_so_far = monkey_count_so_far + 1
     return monkey_count_so_far
+
 
 
 def total_string_size(strings: Iterable[str]) -> int:
@@ -49,26 +56,38 @@ def total_string_size(strings: Iterable[str]) -> int:
     >>> total_string_size({'Hello', 'a', 'David is cool'})
     19
     """
-    breakpoint()
+    # breakpoint()
+    # total_size = 0
+    # for s in strings:
+    #     total_size = len(s)
+    # return total_size
+    # total_size is not accumulating, it's just being reassigned each iteration
     total_size = 0
     for s in strings:
-        total_size = len(s)
+        total_size = total_size + len(s)
     return total_size
 
 
 def total_vowels(strings: Iterable[str]) -> int:
     """Return the total number of vowels found in the given strings.
 
-    >>> total_string_size({'Hello', 'a', 'David is cool'})
+    >>> total_vowels({'Hello', 'a', 'David is cool'})
     8
     """
-    breakpoint()
+    # breakpoint()
+    # for s in strings:
+    #     vowel_count_so_far = 0
+    #     for char in s:
+    #         if char in 'aeiou':
+    #             vowel_count_so_far += 1
+    #
+    # return vowel_count_so_far
+    # vowel_count_so_far resets every time we iterate through strings
+    vowel_count_so_far = 0
     for s in strings:
-        vowel_count_so_far = 0
         for char in s:
             if char in 'aeiou':
                 vowel_count_so_far += 1
-
     return vowel_count_so_far
 
 
@@ -81,12 +100,17 @@ def has_special(strings: Iterable[str]) -> bool:
     >>> has_special(['a', 'bc', 'david'])
     True
     """
-    breakpoint()
+    # breakpoint()
+    # for s in strings:
+    #     if len(s) >= 2 and s[0] == s[-1]:
+    #         return True
+    #     else:
+    #         return False
+    # Don't return false, it terminates the whole function
     for s in strings:
         if len(s) >= 2 and s[0] == s[-1]:
             return True
-        else:
-            return False
+    return False
 
 
 def any_divisible_by(numbers: Iterable[int], d: int) -> bool:
@@ -95,9 +119,15 @@ def any_divisible_by(numbers: Iterable[int], d: int) -> bool:
     >>> any_divisible_by({101, 13, -57}, 25)
     False
     """
-    breakpoint()
+    # breakpoint()
+    # for n in numbers:
+    #     if n % d != 0:
+    #         return True
+    #
+    # return False
+    # The condition is checking if n is not divisible by d, it's checking the negation of what we want
     for n in numbers:
-        if n % d != 0:
+        if n % d == 0:
             return True
 
     return False
@@ -118,11 +148,25 @@ def bonus_score(strings: Iterable[str], bonus_chars: Set[str]) -> int:
     >>> bonus_score(['David', 'Mario', 'Banana', 'CSC110'], {'M', 'a', 'r', 'i', 'o'})
     8
     """
-    breakpoint()
+    # breakpoint()
+    # total_bonus_so_far = 0
+    # string_bonus_so_far = 0
+    #
+    # for s in strings:
+    #     for char in s:
+    #         if char in bonus_chars:
+    #             string_bonus_so_far = string_bonus_so_far + 1
+    #
+    #     if string_bonus_so_far >= 3:
+    #         total_bonus_so_far = total_bonus_so_far + string_bonus_so_far
+    #
+    # return total_bonus_so_far
+    # string_bonus_so_far isn't reset after each iteration through a string
     total_bonus_so_far = 0
     string_bonus_so_far = 0
 
     for s in strings:
+        string_bonus_so_far = 0
         for char in s:
             if char in bonus_chars:
                 string_bonus_so_far = string_bonus_so_far + 1

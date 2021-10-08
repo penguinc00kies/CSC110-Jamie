@@ -27,3 +27,5 @@ def longer_string(str1: str, str2: str) -> str:
 
 
 print(any([all([x < y for y in set()]) for x in set()]))
+
+print([x for x in range(5, 0, -1)])

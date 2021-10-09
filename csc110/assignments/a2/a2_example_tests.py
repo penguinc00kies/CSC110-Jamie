@@ -163,14 +163,22 @@ def test_times_no_conflict() -> None:
     """
     Test times_conflict with non-conflicting meetings times
     """
-    # TODO: Create a test
+    m1 = FRI_12_TO_1
+    m2 = FRI_1_TO_2
+    expected = False
+    actual = a2_courses.times_conflict(m1, m2)
+    assert actual == expected
 
 
 def test_sections_conflict() -> None:
     """
     Test sections_conflict with conflicting sections
     """
-    # TODO: Create a test
+    s1 = ('LEC0101', 'Y', (MON_9_TO_11, TUE_9_TO_11, WED_9_TO_11))
+    s2 = CON123_LEC0321 = ('LEC0321', 'S', (TUE_10_TO_12, FRI_1_TO_2))
+    expected = True
+    actual = a2_courses.sections_conflict(s1, s2)
+    assert actual == expected
 
 
 def test_sections_no_conflict() -> None:
@@ -188,14 +196,28 @@ def test_is_valid() -> None:
     """
     Test is_valid with valid schedule
     """
-    # TODO: Create a test
+    s1 = {
+        'CSC110': CSC110_LEC0101,
+        'MAT137': MAT137_LEC0201,
+        'STA130': STA130_LEC0101
+    }
+    expected = True
+    actual = a2_courses.is_valid(s1)
+    assert actual == expected
+
 
 
 def test_not_valid() -> None:
     """
     Test is_valid with invalid schedule
     """
-    # TODO: Create a test
+    s1 = {
+        'CSC110': CSC110_LEC0101,
+        'CON333': CON333_LEC1337
+    }
+    expected = False
+    actual = a2_courses.is_valid(s1)
+    assert actual == expected
 
 
 def test_2_possible_schedule_combinations() -> None:

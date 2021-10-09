@@ -75,6 +75,7 @@ def times_conflict(m1: tuple[str, datetime.time, datetime.time],
     Preconditions:
         - m1 and m2 match the format for a meeting described by the assignment handout.
     """
+    return m1[0] == m2[0] and (m1[1] <= m2[1] < m1[2] or m2[1] <= m1[1] < m2[2])
 
 
 def sections_conflict(s1: tuple[str, str, tuple], s2: tuple[str, str, tuple]) \
@@ -87,6 +88,10 @@ def sections_conflict(s1: tuple[str, str, tuple], s2: tuple[str, str, tuple]) \
     Preconditions:
         - s1 and s2 match the format for a section described by the assignment handout.
     """
+    m1 = s1[2]
+    m2 = s2[2]
+    overlapping_terms = (s1[1] == s2[1] or s1[1] == 'Y' or s2[1] == 'Y')
+    return overlapping_terms and any([times_conflict(x, y) for x in m1 for y in m2])
 
 
 def is_valid(schedule: dict[str, tuple[str, str, tuple]]) -> bool:
@@ -98,6 +103,8 @@ def is_valid(schedule: dict[str, tuple[str, str, tuple]]) -> bool:
     Preconditions:
         - schedule matches the format for a schedule described by the assignment handout.
     """
+    return all([x == y or not(sections_conflict(schedule[x], schedule[y]))
+                for x in schedule for y in schedule])
 
 
 def possible_schedules(c1: tuple[str, str, set], c2: tuple[str, str, set]) \

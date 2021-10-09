@@ -169,6 +169,7 @@ def delays_by_cause(data: list[list]) -> dict[str, int]:
     unique_codes = [x[4] for x in data]
     unique_codes = {x for x in unique_codes}
     maximum = max([sum([1 for y in unique_codes if y == x]) for x in unique_codes])
+    return {}
 
 
 def sorted_delays_by_cause(cause_map: dict[str, int]) -> list[tuple[int, str]]:

@@ -103,8 +103,9 @@ def is_valid(schedule: dict[str, tuple[str, str, tuple]]) -> bool:
     Preconditions:
         - schedule matches the format for a schedule described by the assignment handout.
     """
-    return all([x == y or not(sections_conflict(schedule[x], schedule[y]))
-                for x in schedule for y in schedule])
+    # return all([x == y or not(sections_conflict(schedule[x], schedule[y]))
+    # for x in schedule for y in schedule])
+    return all([s1 == s2 or not (sections_conflict(s1, s2)) for s1 in schedule.values() for s2 in schedule.values()])
 
 
 def possible_schedules(c1: tuple[str, str, set], c2: tuple[str, str, set]) \
@@ -214,6 +215,7 @@ def is_section_compatible(schedule: dict[str, tuple[str, str, tuple]],
         - section matches the format for a section described by the assignment handout.
         - schedule matches the format for a schedule described by the assignment handout.
     """
+    return all([not sections_conflict(sec, section) for sec in schedule.values()])
 
 
 def is_course_compatible(schedule: dict[str, tuple[str, str, tuple]],
@@ -229,6 +231,8 @@ def is_course_compatible(schedule: dict[str, tuple[str, str, tuple]],
         - schedule matches the format for a schedule described by the assignment handout.
         - course[0] not in schedule
     """
+    return any([all([not sections_conflict(section, sections) for sections in schedule.values()]) \
+                for section in course[2]])
 
 
 def compatible_sections(schedule: dict[str, tuple[str, str, tuple]],
@@ -244,6 +248,7 @@ def compatible_sections(schedule: dict[str, tuple[str, str, tuple]],
         - schedule matches the format for a schedule described by the assignment handout.
         - course[0] not in schedule
     """
+    return {section for section in course[2] if is_section_compatible(schedule, section)}
 
 
 if __name__ == '__main__':

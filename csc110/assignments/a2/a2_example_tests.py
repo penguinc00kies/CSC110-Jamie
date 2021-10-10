@@ -295,13 +295,13 @@ def test_possible_five_course_schedules_with_course_with_no_sections() -> None:
     Test possible_five_course_schedules with five possible course schedules
     """
     c1 = CSC110
-    c2 = ('PHL100', 'Intro to Philosophy', {('LEC0101', 'S', (THU_3_TO_4,))})
+    c2 = ('PHL100', 'Intro to Philosophy', set())
     c3 = CON123
     c4 = CON333
     c5 = MAT137
-    expected = 2
+    expected = []
     actual = a2_courses.possible_five_course_schedules(c1, c2, c3, c4, c5)
-    assert len(actual) == expected
+    assert actual == expected
 
 
 def test_invalid_five_course_schedules_zero_valid_schedules() -> None:
@@ -339,28 +339,44 @@ def test_section_compatible() -> None:
     """
     Test is_section_compatible with compatible sections
     """
-    # TODO: Create a test
+    sc1 = SCHEDULE_1
+    s1 = STA130_LEC0101
+    expected = True
+    actual = a2_courses.is_section_compatible(sc1, s1)
+    assert actual == expected
 
 
 def test_section_not_compatible() -> None:
     """
     Test is_section_compatible with incompatible sections
     """
-    # TODO: Create a test
+    sc1 = SCHEDULE_1
+    s1 = CON333_LEC1337
+    expected = False
+    actual = a2_courses.is_section_compatible(sc1, s1)
+    assert actual == expected
 
 
 def test_course_compatible() -> None:
     """
     Test is_course_compatible with compatible course
     """
-    # TODO: Create a test
+    sc1 = SCHEDULE_1
+    c1 = CON123
+    expected = True
+    actual = a2_courses.is_course_compatible(sc1, c1)
+    assert actual == expected
 
 
 def test_course_not_compatible() -> None:
     """
     Test is_course_compatible with incompatible course
     """
-    # TODO: Create a test
+    sc1 = SCHEDULE_1
+    c1 = CON333
+    expected = False
+    actual = a2_courses.is_course_compatible(sc1, c1)
+    assert actual == expected
 
 
 def test_compatible_sections() -> None:
@@ -372,6 +388,13 @@ def test_compatible_sections() -> None:
     assert actual == expected
 
 
+def test_incompatible_sections() -> None:
+    """
+    Test compatible_sections with compatible sections
+    """
+    actual = a2_courses.compatible_sections(SCHEDULE_1, CON333) == set()
+    expected = True
+    assert actual == expected
 # TODO: Create more tests
 
 ###################################################################################################

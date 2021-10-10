@@ -177,7 +177,7 @@ def test_sections_conflict() -> None:
     Test sections_conflict with conflicting sections
     """
     s1 = ('LEC0101', 'Y', (MON_9_TO_11, TUE_9_TO_11, WED_9_TO_11))
-    s2 = CON123_LEC0321 = ('LEC0321', 'S', (TUE_10_TO_12, FRI_1_TO_2))
+    s2 = ('LEC0321', 'S', (TUE_10_TO_12, FRI_1_TO_2))
     expected = True
     actual = a2_courses.sections_conflict(s1, s2)
     assert actual == expected
@@ -318,7 +318,7 @@ def test_invalid_five_course_schedules_zero_valid_schedules() -> None:
     assert len(actual) == expected
 
 
-def test_invalid_five_course_schedules_two_valid_schedules() -> None:
+def test_valid_five_course_schedules_two_valid_schedules() -> None:
     """
     Test valid_five_course_schedules with invalid five course schedule
     """
@@ -330,6 +330,20 @@ def test_invalid_five_course_schedules_two_valid_schedules() -> None:
     expected = 2
     actual = a2_courses.valid_five_course_schedules(c1, c2, c3, c4, c5)
     assert len(actual) == expected
+
+
+def test_valid_five_course_schedules_with_course_with_no_sections() -> None:
+    """
+    Test possible_five_course_schedules with five possible course schedules
+    """
+    c1 = CSC110
+    c2 = ('PHL101', 'Intro to Philosophy', set())
+    c3 = CON123
+    c4 = CON333
+    c5 = MAT137
+    expected = []
+    actual = a2_courses.valid_five_course_schedules(c1, c2, c3, c4, c5)
+    assert actual == expected
 
 
 ###################################################################################################
@@ -400,6 +414,8 @@ def test_incompatible_sections() -> None:
 ###################################################################################################
 # Part 4
 ###################################################################################################
+
+
 def test_transform_course_data() -> None:
     """
     Test transform_course_data
@@ -427,7 +443,42 @@ def test_transform_meeting_time_data() -> None:
     assert actual == expected
 
 
-# TODO: Create more tests
+def test_filter_by_term_identical_sections() -> None:
+    """
+    Test filter_by_term
+    """
+    expected = MAT137
+    actual = a2_part4.filter_by_term(MAT137, 'S')
+    assert actual == expected
+
+
+def test_filter_by_term_no_sections_returned() -> None:
+    """
+    Test filter_by_term
+    """
+    expected = ('CSC111', 'Foundations of Computer Science II', set())
+    actual = a2_part4.filter_by_term(CSC111, 'F')
+    assert actual == expected
+
+
+def test_get_valid_schedules() -> None:
+    """
+    Test get_valid_schedules
+    """
+    PHL101_LEC0101 = ('LEC0101', 'F', (FRI_9_TO_11,))
+    course_data = {
+        'CSC110': ('CSC110', 'Foundations of Computer Science I', {CSC110_LEC0101}),
+        'MAT137': ('MAT137', 'Calculus!', {MAT137_LEC0101, MAT137_LEC0201}),
+        'STA130': ('STA130', 'Introduction to Statistical Reasoning', {STA130_LEC0101, STA130_LEC0201}),
+        'CON123': ('CON123', 'Foundation Construction', {CON123_LEC0123, CON123_LEC0321}),
+        'PHL101': ('PHL101', 'Intro to Philosophy', {PHL101_LEC0101})
+    }
+    courses = {'CSC110', 'MAT137', 'STA130', 'CON123', 'PHL101'}
+    term = 'F'
+    expected = 2
+    actual = a2_part4.get_valid_schedules(course_data, courses, term)
+    assert len(actual) == expected
+
 
 if __name__ == "__main__":
     pytest.main(['a2_example_tests.py'])

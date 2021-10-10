@@ -22,6 +22,8 @@ This file is Copyright (c) 2021 David Liu, Mario Badr, and Tom Fairgrieve.
 import datetime
 import json
 
+import astroid.manager
+
 import a2_part3
 
 
@@ -50,7 +52,7 @@ def read_course_data(file: str) -> dict:
     with open(file) as json_file:
         data = json.load(json_file)
 
-    return data  # TODO: transform data into the format specified in Part 4, then remove this TODO
+    return {name: transform_course_data(data[name]) for name in data}
 
 
 def transform_course_data(course_data: dict) -> tuple[str, str, set]:
@@ -62,6 +64,8 @@ def transform_course_data(course_data: dict) -> tuple[str, str, set]:
         - course_data is a dictionary containing data about a single course, in the format
           found in course_data_small.json.
     """
+    sections = {transform_section_data(sections) for sections in course_data['sections']}
+    return (course_data['courseCode'], course_data['courseTitle'], sections)
 
 
 def transform_section_data(section_data: dict) -> tuple[str, str, tuple]:
@@ -73,6 +77,8 @@ def transform_section_data(section_data: dict) -> tuple[str, str, tuple]:
         - section_data is a dictionary containing data about a single section, in the format
           found in course_data_small.json.
     """
+    meeting_times = tuple([transform_meeting_time_data(times) for times in section_data['meetingTimes']])
+    return (section_data['sectionCode'], section_data['term'], meeting_times)
 
 
 def transform_meeting_time_data(meeting_time_data: dict) \
@@ -89,6 +95,10 @@ def transform_meeting_time_data(meeting_time_data: dict) \
     You'll need to do some string processing to extract the hours and minutes, and convert
     these to ints and then to a datetime.time. The str.split method is one approach.
     """
+    start_time = str.split(meeting_time_data['startTime'], ':')
+    end_time = str.split(meeting_time_data['endTime'], ':')
+    return (str(meeting_time_data['day']), datetime.time(int(start_time[0]), int(start_time[1])),
+            datetime.time(int(end_time[0]), int(end_time[1])))
 
 
 def get_valid_schedules(course_data: dict[str, tuple[str, str, set]],
@@ -115,6 +125,13 @@ def get_valid_schedules(course_data: dict[str, tuple[str, str, set]],
         2. You'll need to process each course to filter to keep only the sections
            that appear in the given term. See the function we've started for you below.
     """
+    selected_courses = [course_data[course_code] for course_code in courses]
+    c1 = filter_by_term(selected_courses[0], term)
+    c2 = filter_by_term(selected_courses[1], term)
+    c3 = filter_by_term(selected_courses[2], term)
+    c4 = filter_by_term(selected_courses[3], term)
+    c5 = filter_by_term(selected_courses[4], term)
+    return a2_part3.valid_five_course_schedules(c1, c2, c3, c4, c5)
 
 
 def filter_by_term(course: tuple[str, str, set], term: str) -> tuple[str, str, set]:
@@ -129,6 +146,8 @@ def filter_by_term(course: tuple[str, str, set], term: str) -> tuple[str, str, s
     Preconditions:
       - term in {'F', 'S'}
     """
+    valid_sections = {section for section in course[2] if section[1] == term or section[1] == 'Y'}
+    return (course[0], course[1], valid_sections)
 
 
 if __name__ == '__main__':

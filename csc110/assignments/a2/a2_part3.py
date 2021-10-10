@@ -58,8 +58,8 @@ def sections_in_semester(schedule: dict[str, tuple[str, str, tuple]], semester: 
         - The input matches the format for a schedule described by the assignment handout.
         - semester in {'F', 'S'}
     """
-    return {schedule[section] for section in schedule if schedule[section][1] == semester or \
-            schedule[section][1] == 'Y'}
+    return {schedule[section] for section in schedule
+            if schedule[section][1] == semester or schedule[section][1] == 'Y'}
 
 
 ###################################################################################################
@@ -105,7 +105,8 @@ def is_valid(schedule: dict[str, tuple[str, str, tuple]]) -> bool:
     """
     # return all([x == y or not(sections_conflict(schedule[x], schedule[y]))
     # for x in schedule for y in schedule])
-    return all([s1 == s2 or not (sections_conflict(s1, s2)) for s1 in schedule.values() for s2 in schedule.values()])
+    return all([s1 == s2 or not (sections_conflict(s1, s2))
+                for s1 in schedule.values() for s2 in schedule.values()])
 
 
 def possible_schedules(c1: tuple[str, str, set], c2: tuple[str, str, set]) \
@@ -231,7 +232,7 @@ def is_course_compatible(schedule: dict[str, tuple[str, str, tuple]],
         - schedule matches the format for a schedule described by the assignment handout.
         - course[0] not in schedule
     """
-    return any([all([not sections_conflict(section, sections) for sections in schedule.values()]) \
+    return any([all([not sections_conflict(section, sections) for sections in schedule.values()])
                 for section in course[2]])
 
 
@@ -264,8 +265,8 @@ if __name__ == '__main__':
     # (Delete the "#" and space before each line.)
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
     # IMPORTANT: Leave this code uncommented when you submit your files.
-    # python_ta.check_all(config={
-    #     'extra-imports': ['datetime', 'python_ta.contracts'],
-    #     'max-line-length': 100,
-    #     'disable': ['R1705', 'R1729']
-    # })
+    python_ta.check_all(config={
+        'extra-imports': ['datetime', 'python_ta.contracts'],
+        'max-line-length': 100,
+        'disable': ['R1705', 'R1729']
+    })

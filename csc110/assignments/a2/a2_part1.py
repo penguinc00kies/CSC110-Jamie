@@ -88,8 +88,8 @@ if __name__ == '__main__':
     # (Delete the "#" and space before each line.)
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
     # Leave this code uncommented when you submit your files.
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'max-line-length': 100,
-    #     'disable': ['R1705', 'R1729']
-    # })
+    import python_ta
+    python_ta.check_all(config={
+        'max-line-length': 100,
+        'disable': ['R1705', 'R1729']
+    })

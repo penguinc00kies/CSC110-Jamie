@@ -16,17 +16,17 @@
 
 \item[1.]
     \begin{enumerate}
-        \item[1.] TODO: Write your answer and justification here.
-        \item[2.] TODO: Write your answer and justification here.
-        \item[3.] TODO: Write your answer and justification here.
+        \item[1.] Statement 1 is saying that "given a set of numbers, one number will always be greater than all the numbers in the set including itself". Statement 2 is saying "given a set of numbers, one number will always be less than all the numbers in the set including itself". It's obvious that both of these statements are false since a number can never be greater than or less than itself. Therefore, there does not exist a set $D_{1}$ that can make one statement true and the other false.
+        \item[2.] Same reasoning as [1], it's impossible for there to be a set $D_{2}$ that can make both statements true.
+        \item[3.] Same reasoning as [1], any set can make both statement 1 and statement 2 false. Take \{1\} as $D_{3}$. For statement 1, $1$ cannot be greater than all the numbers in the set since $1$ cannot be greater than itself.  For statement 2, $1$ cannot be less than all the numbers in the set since $1$ cannot be less than itself. Therefore, there exists a set $D_{3}$ that makes both statements false.
     \end{enumerate}
 
 \item[2.]
     \begin{enumerate}
-        \item[1.] TODO: Write your definition for $P(x)$ here.
-        \item[2.] TODO: Write your definition for $Q(x)$ here.
+        \item[1.] P(x): \text{``$x < 5$,'' where $x \in S$.}
+        \item[2.] Q(x): \text{``$x < 6$,'' where $x \in S$.}
     \end{enumerate}
-   TODO: Briefly justify your response here.
+   Since the set includes all integers from 0 to 9 inclusive, it's impossible for all of them to be less than 5 and less than 6. Take 8, for example. However, we can assert that if any value in the set is less than 5, then it will also be less than 6(since 6 is greater than 5). Therefore the implication that if an element from $S$ is less than 5, then it will be less than 6 will hold true.
 
 \item[3.]
 Complete this part in the provided \texttt{a2\_part1.py} starter file.
@@ -100,8 +100,7 @@ $\forall s \in sc.sections,~ ...$
 % TODO: fill in the predicate definition for two meeting times conflicting
 
 \begin{align*}
-MeetingTimesConflict(m_1, m_2) : TODO
-\qquad \text{where $m_1, m_2 \in M$}
+MeetingTimesConflict(m_1, m_2) : \text{$m_1[0] = m_2[0] \wedge ((m_1[1] \leq m_2[1] < m_1[2]) ~ \vee$} \\ \text{($m_2[1] \leq m_1[1] < m_2[2]))$ where $m_1, m_2 \in M$}
 \end{align*}
 
 \smallskip
@@ -111,8 +110,7 @@ MeetingTimesConflict(m_1, m_2) : TODO
 % Use the MeetingTimesConflict predicate in your response.
 
 \begin{align*}
-SectionsConflict(s_1, s_2) : TODO
-\qquad \text{where $s_1, s_2 \in S$}
+SectionsConflict(s_1, s_2) : \text{$\exists m_1 \in s_1[2]$ } s.t. \text{ $\exists m_2 \in s_2[2]$ }  s.t.\text{ $MeetingTimesConflict(m_1, ~m_2) ~ \wedge$} \\ \text{$(s_1[1] = s_2[1] ~ \vee ~ s_1 = 'Y' ~ \vee ~ s_2 = 'Y')$ } \text{where $s_1, s_2 \in S$}
 \end{align*}
 
 \smallskip
@@ -122,8 +120,7 @@ SectionsConflict(s_1, s_2) : TODO
 % Use the SectionsConflict predicate in your response.
 
 \begin{align*}
-IsValidSchedule(sc) : TODO
-\qquad \text{where $sc \in SC$}
+IsValidSchedule(sc) : \text{$\forall s_1, ~ s_2 \in sc, ~ s_1 = s_2 ~ \vee ~ \lnot SectionsConflict(sc[s_1], ~sc[s_2])$ } \text{where $sc \in SC$}
 \end{align*}
 
 
@@ -146,8 +143,7 @@ Note that a course $c \in C$ is a tuple, and $c[2]$ is a set of sections, and so
 % TODO: fill in the predicate definition for a section being compatible with a schedule.
 
 \begin{align*}
-IsCompatibleSection(sc, s) : TODO
-\qquad \text{where $sc \in SC, s \in S$}
+IsCompatibleSection(sc, s) : \text{$\forall s_0 \in sc,~ \lnot SectionsConflict(sc[s_0], ~s)$ } \text{where $sc \in SC, s \in S$}
 \end{align*}
 
 \smallskip
@@ -157,8 +153,7 @@ IsCompatibleSection(sc, s) : TODO
 % Use IsCompatibleSection in your response.
 
 \begin{align*}
-IsCompatibleCourse(sc, c) : TODO
-\qquad \text{where $sc \in SC, c \in C$}
+IsCompatibleCourse(sc, c) : \text{$\exists s_1 \in c[2]$ } s.t \text{ $\forall s_2 \in sc, ~\lnot SectionsConflict(s_1, ~sc[s_2])$ } \\ \text{where $sc \in SC, c \in C$}
 \end{align*}
 
 \item[(b)]

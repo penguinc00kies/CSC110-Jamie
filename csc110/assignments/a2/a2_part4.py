@@ -22,8 +22,6 @@ This file is Copyright (c) 2021 David Liu, Mario Badr, and Tom Fairgrieve.
 import datetime
 import json
 
-import astroid.manager
-
 import a2_part3
 
 
@@ -64,7 +62,7 @@ def transform_course_data(course_data: dict) -> tuple[str, str, set]:
         - course_data is a dictionary containing data about a single course, in the format
           found in course_data_small.json.
     """
-    sections = {transform_section_data(sections) for sections in course_data['sections']}
+    sections = {transform_section_data(sec) for sec in course_data['sections']}
     return (course_data['courseCode'], course_data['courseTitle'], sections)
 
 
@@ -77,7 +75,8 @@ def transform_section_data(section_data: dict) -> tuple[str, str, tuple]:
         - section_data is a dictionary containing data about a single section, in the format
           found in course_data_small.json.
     """
-    meeting_times = tuple([transform_meeting_time_data(times) for times in section_data['meetingTimes']])
+    meeting_times = tuple([transform_meeting_time_data(times)
+                          for times in section_data['meetingTimes']])
     return (section_data['sectionCode'], section_data['term'], meeting_times)
 
 
@@ -163,9 +162,9 @@ if __name__ == '__main__':
     # (Delete the "#" and space before each line.)
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
     # IMPORTANT: Leave this code uncommented when you submit your files.
-    # python_ta.check_all(config={
-    #     'extra-imports': ['a2_part3', 'datetime', 'json', 'python_ta.contracts'],
-    #     'max-line-length': 100,
-    #     'disable': ['R1705'],
-    #     'allowed-io': ['read_course_data']
-    # })
+    python_ta.check_all(config={
+        'extra-imports': ['a2_part3', 'datetime', 'json', 'python_ta.contracts'],
+        'max-line-length': 100,
+        'disable': ['R1705'],
+        'allowed-io': ['read_course_data']
+    })

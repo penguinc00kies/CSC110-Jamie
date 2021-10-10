@@ -148,6 +148,8 @@ def test_sections_in_semester_empty() -> None:
 ###################################################################################################
 # Part 3 Question 2
 ###################################################################################################
+
+
 def test_times_conflict() -> None:
     """
         Test times_conflict with conflicting meetings times that overlap
@@ -206,7 +208,6 @@ def test_is_valid() -> None:
     assert actual == expected
 
 
-
 def test_not_valid() -> None:
     """
     Test is_valid with invalid schedule
@@ -235,7 +236,22 @@ def test_4_possible_schedule_combinations() -> None:
     """
     Test possible_schedule_combinations with 4 possible combinations
     """
-    # TODO: Create a test
+    c1 = MAT137
+    c2 = CON123
+    expected = 4
+    actual = a2_courses.possible_schedules(c1, c2)
+    assert len(actual) == expected
+
+
+def test_possible_schedule_combinations_with_course_with_no_sections() -> None:
+    """
+    Test possible_schedule_combinations with 4 possible combinations
+    """
+    c1 = MAT137
+    c2 = ('PHL100', 'Intro to Philosophy', set())
+    expected = []
+    actual = a2_courses.possible_schedules(c1, c2)
+    assert actual == expected
 
 
 def test_1_valid_schedule_combinations() -> None:
@@ -253,7 +269,11 @@ def test_4_valid_schedule_combinations() -> None:
     """
     Test valid_schedule_combinations with 4 valid schedule combinations
     """
-    # TODO: Create a test
+    c1 = CON123
+    c2 = STA130
+    expected = 4
+    actual = a2_courses.valid_schedules(c1, c2)
+    assert len(actual) == expected
 
 
 def test_possible_five_course_schedules() -> None:
@@ -270,14 +290,47 @@ def test_possible_five_course_schedules() -> None:
     assert len(actual) == expected
 
 
-def test_invalid_five_course_schedules() -> None:
+def test_possible_five_course_schedules_with_course_with_no_sections() -> None:
+    """
+    Test possible_five_course_schedules with five possible course schedules
+    """
+    c1 = CSC110
+    c2 = ('PHL100', 'Intro to Philosophy', {('LEC0101', 'S', (THU_3_TO_4,))})
+    c3 = CON123
+    c4 = CON333
+    c5 = MAT137
+    expected = 2
+    actual = a2_courses.possible_five_course_schedules(c1, c2, c3, c4, c5)
+    assert len(actual) == expected
+
+
+def test_invalid_five_course_schedules_zero_valid_schedules() -> None:
     """
     Test valid_five_course_schedules with invalid five course schedule
     """
-    # TODO: Create a test
+    c1 = CSC110
+    c2 = CSC111
+    c3 = CON123
+    c4 = CON333
+    c5 = MAT137
+    expected = 0
+    actual = a2_courses.valid_five_course_schedules(c1, c2, c3, c4, c5)
+    assert len(actual) == expected
 
 
-# TODO: Create more tests
+def test_invalid_five_course_schedules_two_valid_schedules() -> None:
+    """
+    Test valid_five_course_schedules with invalid five course schedule
+    """
+    c1 = CSC110
+    c2 = CSC111
+    c3 = CON123
+    c4 = STA130
+    c5 = MAT137
+    expected = 2
+    actual = a2_courses.valid_five_course_schedules(c1, c2, c3, c4, c5)
+    assert len(actual) == expected
+
 
 ###################################################################################################
 # Part 3 Question 3

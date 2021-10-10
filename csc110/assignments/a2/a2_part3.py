@@ -123,6 +123,7 @@ def possible_schedules(c1: tuple[str, str, set], c2: tuple[str, str, set]) \
         - c1 and c2 match the format for a course described by the assignment handout.
         - c1 != c2
     """
+    return [{c1[0]: x, c2[0]: y} for x in c1[2] for y in c2[2]]
 
 
 def valid_schedules(c1: tuple[str, str, set],
@@ -143,6 +144,8 @@ def valid_schedules(c1: tuple[str, str, set],
         - c1 and c2 match the format for a course described by the assignment handout.
         - c1 != c2
     """
+    all_schedules = possible_schedules(c1, c2)
+    return [x for x in all_schedules if is_valid(x)]
 
 
 def possible_five_course_schedules(c1: tuple[str, str, set],
@@ -167,6 +170,8 @@ def possible_five_course_schedules(c1: tuple[str, str, set],
     HINT: you'll want a comprehension with 5 different variables. You can split up each
     "for ... in ..." across multiple lines to help make your code more readable.
     """
+    return [{c1[0]: v, c2[0]: w, c3[0]: x, c4[0]: y, c5[0]: z}
+            for v in c1[2] for w in c2[2] for x in c3[2] for y in c4[2] for z in c5[2]]
 
 
 def valid_five_course_schedules(c1: tuple[str, str, set],
@@ -189,6 +194,8 @@ def valid_five_course_schedules(c1: tuple[str, str, set],
         - c3 != c4 and c3 != c5
         - c4 != c5
     """
+    all_schedules = possible_five_course_schedules(c1, c2, c3, c4, c5)
+    return [x for x in all_schedules if is_valid(x)]
 
 
 ###################################################################################################

@@ -162,9 +162,9 @@ if __name__ == '__main__':
     # (Delete the "#" and space before each line.)
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
     # IMPORTANT: Leave this code uncommented when you submit your files.
-    python_ta.check_all(config={
-        'extra-imports': ['a2_part3', 'datetime', 'json', 'python_ta.contracts'],
-        'max-line-length': 100,
-        'disable': ['R1705'],
-        'allowed-io': ['read_course_data']
-    })
+    # python_ta.check_all(config={
+    #     'extra-imports': ['a2_part3', 'datetime', 'json', 'python_ta.contracts'],
+    #     'max-line-length': 100,
+    #     'disable': ['R1705'],
+    #     'allowed-io': ['read_course_data']
+    # })

@@ -45,7 +45,7 @@ def mystery_2b_if(n: int) -> bool:
 
 def mystery_2b_no_if(n: int) -> bool:
     """Mystery 2b."""
-    return (n % 2 == 0 and n % 3 == 1) or (n % 2 == 1 and ((n <= 4 and n < 0) or (n > 4 and n % 3 != 1)))
+    return (n % 2 == 0 and n % 3 == 1) or (n % 2 == 1 and ((n < 0) or (n > 4 and n % 3 != 1)))
 
 
 def mystery_2c_if(c1: int, c2: int, c3: int) -> bool:
@@ -65,4 +65,4 @@ def mystery_2c_if(c1: int, c2: int, c3: int) -> bool:
 
 
 def mystery_2c_no_if(c1: int, c2: int, c3: int) -> bool:
-    return not (c1 == c2) and ((c1 > c2 or c1 < c2) and c3 > c2)
+    return (c1 != c2) and (c3 > c2)

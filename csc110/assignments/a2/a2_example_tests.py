@@ -131,7 +131,6 @@ def test_num_lecture_hours() -> None:
     assert a2_courses.num_lecture_hours(MAT137_LEC0101) == 6
 
 
-# TODO: Create more tests
 def test_sections_in_semester() -> None:
     """
     Test num_lecture_hours with a sample schedule
@@ -254,7 +253,7 @@ def test_possible_schedule_combinations_with_course_with_no_sections() -> None:
     assert actual == expected
 
 
-def test_1_valid_schedule_combinations() -> None:
+def test_1_valid_schedule_combination() -> None:
     """
     Test valid_schedule_combinations with valid schedule combination, bounds of 1
     """
@@ -409,7 +408,7 @@ def test_incompatible_sections() -> None:
     actual = a2_courses.compatible_sections(SCHEDULE_1, CON333) == set()
     expected = True
     assert actual == expected
-# TODO: Create more tests
+
 
 ###################################################################################################
 # Part 4

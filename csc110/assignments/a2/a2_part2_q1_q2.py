@@ -65,12 +65,12 @@ def mystery_2a_no_if(x: int, y: int, z: set[int]) -> bool:
 def mystery_2b_no_if(n: int) -> bool:
     """Return the same value as mystery_2b_if, but without using any if statements."""
     return (n % 2 == 0 and n % 3 == 1) or (n % 2 == 1 and (
-        (n <= 4 and n < 0) or (n > 4 and n % 3 != 1)))
+        (n < 0) or (n > 4 and n % 3 != 1)))
 
 
 def mystery_2c_no_if(c1: int, c2: int, c3: int) -> bool:
     """Return the same value as mystery_2c_if, but without using any if statements."""
-    return not (c1 == c2) and ((c1 > c2 or c1 < c2) and c3 > c2)
+    return (c1 != c2) and (c3 > c2)
 
 
 if __name__ == '__main__':

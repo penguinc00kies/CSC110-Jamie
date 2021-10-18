@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{framed}
+
+\title{CSC110 Fall 2021: Mock Test, Question 1}
+\author{TODO: WRITE YOUR NAME HERE}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+\maketitle
+
+\section*{Predicate logic}
+
+Consider the following domain.
+Let $M$ be a set of movies, and suppose we define the following predicates:
+
+\begin{itemize}
+\item $SciFi(m)$: ``$m$ is a science fiction movie", where $m \in M$
+\item $HighlyRated(m)$: ``$m$ is highly rated (has an average rating on IMDB of at least 8/10)", where $m \in M$.
+\end{itemize}
+
+\begin{enumerate}
+\item[(a)]
+First, translate each of the following statements into English:
+
+\begin{enumerate}
+\item[1.]
+$\forall m \in M,~ SciFi(m) \land HighlyRated(m)$
+
+\begin{framed}
+TODO: Write the statement in English here
+\end{framed}
+
+\item[2.]
+$\forall m \in M,~ SciFi(m) \Rightarrow HighlyRated(m)$
+
+\begin{framed}
+TODO: Write the statement in English here
+\end{framed}
+
+\item[3.] $\forall m \in M,~ HighlyRated(m) \Rightarrow SciFi(m)$
+
+\begin{framed}
+TODO: Write the statement in English here
+\end{framed}
+
+\end{enumerate}
+
+\item[(b)]
+In the space below, we've started a table (Table 1) that represents a possible state for a set $M$ that contains four movies
+But one row is missing.
+Fill in the row to make all three of the statements from part (a) \textbf{True}.
+
+\begin{table}[h!]
+\centering
+\caption{A possible state for a set $M$ that contains four movies.}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Movie} & \textbf{Science fiction?} & \textbf{Score on IMDb} \\
+\hline
+1 & Yes & 9.5 \\
+\hline
+2 & Yes & 8.5 \\
+\hline
+3 & Yes & 10.0 \\
+\hline
+4 & TODO & TODO \\ % TODO: Fill in the two cells of row 4
+\hline
+\end{tabular}
+\end{table}
+
+\end{enumerate}
+\end{document}

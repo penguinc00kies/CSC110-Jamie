@@ -40,7 +40,7 @@ def only_evens(lst: list[list[int]]) -> list[list[int]]:
     even_lists = []
 
     for sublist in lst:
-        if all([x % 2 == 0 for x in sublist]):
+        if all((x % 2 == 0 for x in sublist)):
             list.append(even_lists, sublist)
 
     return even_lists
@@ -117,7 +117,6 @@ def find_gcd(numbers: set[int]) -> int:
     """
 
     return min([math.gcd(x, y) for x in numbers for y in numbers if x != y])
-
 
 
 def equivalent_mod(a: int, b: int, n: int) -> bool:

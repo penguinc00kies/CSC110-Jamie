@@ -49,11 +49,16 @@ class MovieData:
 
 # Your task is to implement the following function by filling in to the TODOs.
 def is_scifi(data: MovieData) -> bool:
-    """TODO: Include a description of the function and remove this todo
+    """Returns a boolean representing whether or not a given movie is science fiction
 
-    TODO: Include two doctest examples and remove this todo
+    >>> star_fights = MovieData('Star Fights', 'Yes', 2.5)
+    >>> is_scifi(star_fights)
+    True
+    >>> raiders_of_the_lost_tomb = MovieData('Raider of the Lost Tomb', 'No', 9.8)
+    >>> is_scifi(raiders_of_the_lost_tomb)
+    False
     """
-    # TODO: Implement the function body and remove this todo
+    return data.scifi == 'Yes'
 
 
 if __name__ == '__main__':

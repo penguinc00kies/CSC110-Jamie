@@ -1,0 +1,164 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\usepackage[top=0.75in, bottom=0.75in,left=1.8in, right=1.8in]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\title{CSC110 Lecture 16 Starter File}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+\section*{Definitions}
+
+$$d \mid n:~ \exists k \in \Z,~ n = dk \qquad \text{where $d, n \in \Z$}$$
+\begin{align*}
+& IsPrime(p): \\
+& \quad p > 1 \land \big(\forall d \in \N,~ d \mid p \Rightarrow d = 1 \lor d = p\big) \\
+& \quad \text{where $p \in \Z$}
+\end{align*}
+
+\section*{Demo 1}
+Prove that: $23 \mid 115$
+
+\begin{proof}
+% TODO: Complete the proof
+\end{proof}
+
+\section*{Demo 2}
+Prove that there exists an integer that divides 104.
+
+\begin{proof}
+% TODO: Complete the proof
+\end{proof}
+
+\newpage
+\section*{Demo 3}
+Prove that every integer is divisible by 1.
+
+\textbf{Translation}.
+
+$$\forall n \in \Z,~ 1 \mid n$$
+
+\textbf{Unpack definition}.
+
+$$\forall n \in \Z,~ \exists k \in \Z,~ n = 1 \cdot k$$
+
+\begin{proof}
+% TODO: Complete the proof
+\end{proof}
+
+\newpage
+\section*{Demo 4}
+
+Prove that for all integers $x$,
+if $x$ divides $x + 5$ then $x$ also divides 5.
+
+\textbf{Translation}.
+
+$$\forall x \in \Z,~ x \mid x + 5 \Rightarrow x \mid 5$$
+
+\textbf{Unpack definition}.
+
+$$
+\forall x \in \Z,~
+(\exists k_1 \in \Z,~ x + 5 = k_1 x) \Rightarrow
+(\exists k_2 \in \Z,~ 5 = k_2 x)
+$$
+
+\begin{proof}
+% TODO: complete the proof
+\end{proof}
+
+\textbf{Rough Work}.
+% TODO: complete rough work to help complete the proof above
+
+\newpage
+\section*{Exercise 1: Practice with Proofs}
+
+1. Prove the following statement using the defintion of divisibility.
+
+$$\forall n, d, a \in \Z,~ d \mid n \Rightarrow d \mid an$$
+
+\begin{proof}
+% TODO: complete the proof
+\end{proof}
+
+\newpage
+
+2. Consider this statement.
+
+$$\forall n, d, a \in \Z,~ d \mid an \Rightarrow d \mid a \lor d \mid n$$
+
+This statement is false.
+
+
+
+\textbf{Negation}.
+
+First, write the negation of this statement.
+Tip: in Latex, \verb|\nmid| means "does not divide"
+
+% TODO: write the negation
+
+\textbf{Proving the negation.}
+
+Prove the negation of the statement. (By proving the statement’s negation is True, you’ll prove that the original statement is False.)
+
+\begin{proof}
+% TODO: complete the proof
+\end{proof}
+
+\newpage
+\section*{Exercise 2: Primality Testing}
+
+In lecture, we saw an algorithm for checking whether a number $p$ is prime that checks all of the possible factors of $p$ between $2$ and $\floor{\sqrt{p}}$, inclusive.
+
+We can prove that this algorithm is correct by proving the following statement:
+
+$$\forall p \in \Z,~ \mathit{Prime}(p) \Leftrightarrow \big(p > 1 \land (\forall d \in \N,~ 2 \leq d \leq \sqrt{p} \Rightarrow d \nmid p) \big).$$
+
+This is a larger statement than the ones we've looked at so far, so on this exercise we've broken down the proof of this statement for you to complete.
+
+\begin{proof}
+Let $p \in \Z$. We need to prove an if and only if, which we do by dividing the proof into two parts.
+
+\textbf{Part 1}: Prove that $\mathit{Prime}(p) \Rightarrow \big(p > 1 \land (\forall d \in \N,~ 2 \leq d \leq \sqrt{p} \Rightarrow d \nmid p) \big)$.
+
+% 1. Write down what we can **assume** in this part of the proof.
+
+% 2. To prove an AND, we need to prove that both parts are true. First, prove that $p > 1$.
+
+% 3. Now, prove that $\forall d \in \N,~ 2 \leq d \leq \sqrt{p} \Rightarrow d \nmid p$.
+
+
+\textbf{Part 2}: Prove that $p > 1 \land (\forall d \in \N,~ 2 \leq d \leq \sqrt{p} \Rightarrow d \nmid p) \Rightarrow \mathit{Prime}(p)$.
+
+% 4. Write down what we can **assume** in this part of the proof.
+
+% We need to prove that $\mathit{Prime}(p)$, which expands into $p > 1 \land (\forall d \in \N,~ d \mid p \Rightarrow d = 1 \lor d = p)$.
+
+% 5. First, prove that $p > 1$.
+
+% 6. Now for the proof of $\forall d \in \N,~ d \mid p \Rightarrow d = 1 \lor d = p$. Start by writing the appropriate proof header, introducing the variable $d$ and assumption about $d$.
+
+% 7. Use the **contrapositive** of a part of your original assumption. What can you conclude about $d$?
+
+% 8. Using the cases from the previous part, prove that $d = 1 \lor d = p$.
+
+\end{proof}
+
+\end{document}

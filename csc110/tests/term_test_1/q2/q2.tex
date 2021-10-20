@@ -1,0 +1,93 @@
+% Copyright and Usage Information
+% ===============================
+
+% This file is provided solely for the personal and private use of students
+% taking CSC110 at the University of Toronto St. George campus. All forms of
+% distribution of this code, whether as given or with any changes, are
+% expressly prohibited. For more information on copyright for CSC110 materials,
+% please consult our Course Syllabus.
+
+% This file is Copyright (c) 2021 Mario Badr and Tom Fairgrieve.
+\documentclass{article}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\usepackage[margin=1in]{geometry}
+
+\title{CSC110 Fall 2021: Term Test 1, Question 2 (Predicate Logic)}
+\author{TODO: INSERT YOUR NAME HERE}
+\date{Wednesday October 20, 2021}
+
+\begin{document}
+\maketitle
+
+Let $A$ be the set of all animals and all plants.
+Suppose we define the following predicates:
+
+\begin{itemize}
+    \item $Plant(x):$ ``$x$ is a plant", where $x \in A$.
+    \item $Omnivore(x):$ ``$x$ is an omnivore", where $x \in A$.
+    \item $Herbivore(x):$ ``$x$ is a herbivore", where $x \in A$.
+    \item $IsColourful(x):$ ``$x$ is colourful", where $x \in A$.
+    \item $Eats(x, y):$ ``$x$ eats $y$", where $x, y \in A$.
+\end{itemize}
+(An omnivore is an animal that eats food of both plant and animal origin.
+A herbivore is an animal that only eats plants.)
+
+For parts (1) to (3), translate each of the following statements from English into symbolic predicate logic.
+In part (4), you will translate an English statement into Python code.
+
+No explanation is necessary.
+Do not define any of your own predicates or sets.
+
+Use parentheses to indicate how you want to group logical expressions with multiple operators (especially when dealing with $\Rightarrow$ and $\Leftrightarrow$).
+
+\begin{enumerate}
+\item
+At least one plant is colourful.
+
+\textbf{Solution}:
+
+$\exists x \in A $ s.t. $IsColourful(x) \and Plant(x)$
+
+\item
+Omnivores eat any animal or plant.
+
+\textbf{Solution}:
+
+$\forall x, y \in A, ~(Omnivore(x)) \Rightarrow (Eats(x, y))$
+
+\item
+At least one herbivore does not eat colourful plants.
+
+\textbf{Solution}:
+
+$\forall x \in A, \exists y \in A $ s.t. $ (IsColourful(x) \land Plant(x)) \Rightarrow (\neg Eats(y, x))$
+
+\item
+Suppose we define the following in Python:
+\begin{itemize}
+    \item A variable \texttt{animals\_and\_plants} which represents a set of animals and plants.
+    \item Functions \texttt{is\_herbivore} and \texttt{eats} that take in argument values from \texttt{animals\_and\_plants}, and correspond to the predicates $Herbivore$ and $Eats$, respectively, defined at the top of this question.
+    \item A variable \texttt{brussel\_sprouts} that refers to the plant brussel sprouts. (Note: \texttt{brussel\_sprouts in animals\_and\_plants}  is True)
+\end{itemize}
+
+Using these definitions, translate the following statement into a Python expression:
+\begin{quote}
+All herbivores eat brussel sprouts.
+\end{quote}
+
+You must use a comprehension in your solution, and may not use any loops.
+
+\begin{verbatim}
+all([eats(h, bs) for h in animals_and_plants for bs in animals_and_plants
+    if is_herbivore(h) if bs == brussel_sprouts])
+
+\end{verbatim}
+
+\begin{center}
+    \textbf{SUBMIT THIS FILE AND THE GENERATED PDF q2.pdf FOR GRADING}
+\end{center}
+\end{enumerate}
+\end{document}

@@ -119,7 +119,7 @@ def is_pythagorean_list(lst: list[tuple[int, int, int]]) -> bool:
 def test_multiplier_pyth_triple(p: tuple[int, int, int], k: int) -> None:
     """Test the multiplier property of Pythagorean triples."""
     new_tuple = (k * p[0], k * p[1], k * p[2])
-    assert  is_pythagorean_triple(p) == is_pythagorean_triple(new_tuple)
+    assert is_pythagorean_triple(p) == is_pythagorean_triple(new_tuple)
 
 
 if __name__ == '__main__':
@@ -131,12 +131,12 @@ if __name__ == '__main__':
     doctest.testmod()
 
     # You can uncomment this to check your test in Part (c).
-    # import pytest
-    # pytest.main(['q1.py'])
+    import pytest
+    pytest.main(['q1.py'])
 
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'disable': ['R1729', 'C0412'],
-    #     'extra-imports': ['python_ta.contracts', 'hypothesis.strategies'],
-    #     'max-line-length': 100
-    # })
+    import python_ta
+    python_ta.check_all(config={
+        'disable': ['R1729', 'C0412'],
+        'extra-imports': ['python_ta.contracts', 'hypothesis.strategies'],
+        'max-line-length': 100
+    })

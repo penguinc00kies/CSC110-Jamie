@@ -83,7 +83,6 @@ def lowercase_titles(data: list[list], threshold: int) -> None:
         - You may not use any comprehensions
         - You may not use any built-in functions/methods, EXCEPT FOR: str.lower
 
-    TODO: include ONE doctest example and remove this todo. We have gotten you started.
     >>> example_data = create_nested_list_data()
     >>> lowercase_titles(example_data, 240000)
     >>> example_data[0][0] == 'Shape of You' and example_data[4][0] == 'closer'

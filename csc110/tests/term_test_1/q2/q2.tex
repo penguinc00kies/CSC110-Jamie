@@ -49,7 +49,7 @@ At least one plant is colourful.
 
 \textbf{Solution}:
 
-$\exists x \in A $ s.t. $IsColourful(x) \and Plant(x)$
+$\exists x \in A $ s.t. $IsColourful(x) \land Plant(x)$
 
 \item
 Omnivores eat any animal or plant.
@@ -63,7 +63,7 @@ At least one herbivore does not eat colourful plants.
 
 \textbf{Solution}:
 
-$\forall x \in A, \exists y \in A $ s.t. $ (IsColourful(x) \land Plant(x)) \Rightarrow (\neg Eats(y, x))$
+$\forall x \in A, \exists y \in A $ s.t. $ (IsColourful(x) \land Plant(x)) \Rightarrow (Herbivore(y) \land \neg Eats(y, x))$
 
 \item
 Suppose we define the following in Python:

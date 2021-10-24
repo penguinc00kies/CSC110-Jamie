@@ -91,7 +91,7 @@ def is_pythagorean_list(lst: list[tuple[int, int, int]]) -> bool:
     Preconditions:
         - all([all([integer > 0 for integer in tuple]) for tuple in lst])
 
-    >>> is_pythagorean_list([(4, 5, 3), (5, 12, 13), (8, 15, 17)])
+    >>> is_pythagorean_list([(4, 5, 3), (5, 13, 12), (8, 15, 17)])
     True
     >>> is_pythagorean_list([(4, 5, 3), (1, 2, 3)])
     False

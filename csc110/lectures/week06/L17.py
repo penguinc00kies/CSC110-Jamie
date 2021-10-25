@@ -76,6 +76,6 @@ def gcd_extended(a: int, b: int) -> tuple[int, int, int]:
         x, y = y, r
 
         # Update px, qx, py, and qy
-        px, qx, py, qy = ...
+        px, qx, py, qy = py, qy, px - (q * py), qx - (q * qy)
 
     return (x, px, qx)

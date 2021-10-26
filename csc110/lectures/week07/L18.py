@@ -65,4 +65,3 @@ def modular_inverse(a: int, n: int) -> int:
     # Step 2: Try the examples, and notice that the docstring says the return value must be in
     # the range "0 to n-1". How can we use modulo to fix this?
     return p1 % n
-

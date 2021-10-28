@@ -54,6 +54,14 @@ def create_model_uniform(text: str) -> dict[str, int]:
 
     IMPLEMENTATION NOTE: Use the str.split method to get a list of words.
     """
+    word_list = str.split(text)
+    word_dict = {}
+    for word in word_list:
+        if word not in word_dict:
+            word_dict[word] = 0
+        word_dict[word] = word_dict[word] + 1
+
+    return word_dict
 
 
 def run_example(filename: str, num_words: int) -> str:

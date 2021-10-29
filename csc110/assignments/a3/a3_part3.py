@@ -79,7 +79,7 @@ def clean_text(text: str) -> list[str]:
         text = str.replace(text, p, ' ')
 
     # Convert text to lowercase
-    str.lower(text)
+    text = str.lower(text)
 
     # Split text into words and return
     return str.split(text)
@@ -95,7 +95,7 @@ def count_keywords(word_list: list[str]) -> dict[str, int]:
         if word in WORD_TO_INTENSITY:
             if word not in occurrences_so_far:
                 occurrences_so_far[word] = 0
-                occurrences_so_far[word] = occurrences_so_far[word] + 1
+            occurrences_so_far[word] = occurrences_so_far[word] + 1
 
     return occurrences_so_far
 

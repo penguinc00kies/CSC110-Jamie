@@ -32,9 +32,10 @@ def update_follow_list(model: dict[str, list[str]], word: str, follow_word: str)
     """
     if word not in model:
         model[word] = []
-        model[word].append(follow_word)
-    elif word in model and follow_word not in model[word]:
-        model[word].append(follow_word)
+    #     model[word].append(follow_word)
+    # elif word in model and follow_word not in model[word]:
+    #     model[word].append(follow_word)
+    model[word].append(follow_word)
 
 
 def create_model_owc(text: str) -> tuple[int, dict[str, list[str]]]:
@@ -64,6 +65,7 @@ def choose_from_keys(transitions: dict[str, list[str]]) -> str:
     Preconditions:
         - transitions != {}
     """
+    return random.choice(list(transitions.keys()))
 
 
 def choose_from_follow_list(key: str, transitions: dict[str, list[str]]) -> str:
@@ -77,6 +79,12 @@ def choose_from_follow_list(key: str, transitions: dict[str, list[str]]) -> str:
         - key in transitions
         - transitions[key] != []
     """
+    follow_list = transitions[key]
+    random_word = random.choice(follow_list)
+    follow_list.remove(random_word)
+    if follow_list == []:
+        transitions.pop(key)
+    return random_word
 
 
 def generate_text_owc(count: int, transitions: dict[str, list[str]]) -> str:
@@ -105,8 +113,14 @@ def generate_text_owc(count: int, transitions: dict[str, list[str]]) -> str:
 
     # We've provided this template as a starting point; you may modify it as necessary.
     current_word = ''
+    word_added = ''
     for _ in range(count - 1):
-        ...
+        if word_added in transitions.keys():
+            current_word = word_added
+        else:
+            current_word = choose_from_keys(transitions)
+        word_added = choose_from_follow_list(current_word, transitions)
+        words_so_far.append(word_added)
 
     return str.join(' ', words_so_far)
 

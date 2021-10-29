@@ -28,7 +28,9 @@ class TestCalculateMr:
 
     def test_equation_3a_branch(self) -> None:
         """Test the branch calculate_mr that contains Equation 3a."""
-        # TODO: Complete this unit test and remove this TODO
+        expected = 98.70101979
+        actual = ffwi.calculate_mr(2.4, 51.0)
+        assert actual == expected
 
     def test_equation_3b_branch(self) -> None:
         """Test the branch calculate_mr that contains Equation 3b."""

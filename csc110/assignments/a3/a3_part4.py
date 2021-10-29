@@ -19,6 +19,7 @@ This file is Copyright (c) 2021 Mario Badr and Tom Fairgrieve.
 import csv
 import plotly.graph_objects as go
 
+import a3_ffwi_system
 from a3_ffwi_system import WeatherMetrics, FfwiOutput
 import a3_ffwi_system as ffwi
 
@@ -46,6 +47,25 @@ def load_data(filename: str) -> tuple[list[WeatherMetrics], list[FfwiOutput]]:
             # row is a list of strings
             # Your task is to extract the relevant data from row and add it
             # to the accumulator.
+            month = int(row[0])
+            day = int(row[1])
+            temp = float(row[2])
+            humidity = float(row[3])
+            wind = float(row[4])
+            rain = float(row[5])
+
+            some_weather_metrics = WeatherMetrics(month, day, temp, humidity, wind, rain)
+            inputs_so_far.append(some_weather_metrics)
+
+            ffmc = float(row[6])
+            dmc = float(row[7])
+            dc = float(row[8])
+            isi = float(row[9])
+            bui = float(row[10])
+            fwi = float(row[11])
+
+            some_ffwi_output = FfwiOutput(ffmc, dmc, dc, isi, bui, fwi)
+            outputs_so_far.append(some_ffwi_output)
 
     return inputs_so_far, outputs_so_far
 
@@ -60,6 +80,32 @@ def calculate_ffwi_outputs(readings: list[WeatherMetrics]) -> dict[tuple[int, in
     Preconditions:
         - Every reading in readings has a unique (month, day) pair
     """
+    ffwi_mapping = {}
+
+    ffmc = ffwi.calculate_ffmc(readings[0], ffwi.INITIAL_FFMC)
+    dmc = ffwi.calculate_dmc(readings[0], ffwi.INITIAL_DMC)
+    dc = ffwi.calculate_dc(readings[0], ffwi.INITIAL_DC)
+    isi = ffwi.calculate_isi(readings[0], ffmc)
+    bui = ffwi.calculate_bui(dmc, dc)
+    fwi = ffwi.calculate_fwi(isi, bui)
+
+    some_ffwi_output = FfwiOutput(ffmc, dmc, dc, isi, bui, fwi)
+
+    ffwi_mapping[(readings[0].month, readings[0].day)] = some_ffwi_output
+
+    for i in range(1, len(readings)):
+        ffmc = ffwi.calculate_ffmc(readings[i], ffwi_mapping[(readings[i-1].month, readings[i-1].day)].ffmc)
+        dmc = ffwi.calculate_dmc(readings[i], ffwi_mapping[(readings[i - 1].month, readings[i - 1].day)].dmc)
+        dc = ffwi.calculate_dc(readings[i], ffwi_mapping[(readings[i - 1].month, readings[i - 1].day)].dc)
+        isi = ffwi.calculate_isi(readings[i], ffmc)
+        bui = ffwi.calculate_bui(dmc, dc)
+        fwi = ffwi.calculate_fwi(isi, bui)
+
+        some_ffwi_output = FfwiOutput(ffmc, dmc, dc, isi, bui, fwi)
+
+        ffwi_mapping[(readings[i].month, readings[i].day)] = some_ffwi_output
+
+    return ffwi_mapping
 
 
 def get_xy_data(outputs: dict[tuple[int, int], FfwiOutput], attribute: str) -> \
@@ -73,6 +119,14 @@ def get_xy_data(outputs: dict[tuple[int, int], FfwiOutput], attribute: str) -> \
         >>> getattr(output, 'ffmc')
         2.0
     """
+    dates_so_far = []
+    attributes_so_far = []
+
+    for key in outputs:
+        dates_so_far.append(str(key[0]) + ', ' + str(key[1]))
+        attributes_so_far.append(getattr(outputs[key], attribute))
+
+    return (dates_so_far, attributes_so_far)
 
 
 def plot_ffwi_attribute(outputs: dict[tuple[int, int], FfwiOutput], attribute: str) -> None:

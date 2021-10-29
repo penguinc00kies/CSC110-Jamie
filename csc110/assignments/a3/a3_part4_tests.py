@@ -34,9 +34,9 @@ class TestCalculateMr:
 
     def test_equation_3b_branch(self) -> None:
         """Test the branch calculate_mr that contains Equation 3b."""
-        expected = 179.93419860978423
+        expected = 179.9341986
         actual = ffwi.calculate_mr(2.4, 151.0)
-        assert actual == expected
+        assert pytest.approx(actual) == expected
 
 
 class TestCalculateM:
@@ -44,19 +44,31 @@ class TestCalculateM:
 
     def test_no_mutation_mo_equals_ed(self) -> None:
         """Test that calculate_m does not mutate the WeatherMetrics argument when mo == ed."""
-        # TODO: Complete this unit test and remove this TODO
+        some_weather_metric = WeatherMetrics(1, 1, 0.0, 0.0, 0.0, 0.0)
+        previous_id = id(some_weather_metric)
+        ffwi.calculate_m(some_weather_metric, 1.0, 1.0)
+        assert previous_id == id(some_weather_metric)
 
     def test_no_mutation_mo_leq_ew(self) -> None:
         """Test that calculate_m does not mutate the WeatherMetrics argument when mo <= ew."""
-        # TODO: Complete this unit test and remove this TODO
+        some_weather_metric = WeatherMetrics(1, 1, 0.0, 0.0, 0.0, 0.0)
+        previous_id = id(some_weather_metric)
+        ffwi.calculate_m(some_weather_metric, 1.0, 0.0)
+        assert previous_id == id(some_weather_metric)
 
     def test_no_mutation_mo_greater_than_ew(self) -> None:
         """Test that calculate_m does not mutate the WeatherMetrics argument when mo > ew."""
-        # TODO: Complete this unit test and remove this TODO
+        some_weather_metric = WeatherMetrics(1, 1, 0.0, 0.0, 0.0, 0.0)
+        previous_id = id(some_weather_metric)
+        ffwi.calculate_m(some_weather_metric, 101.0, 100.0)
+        assert previous_id == id(some_weather_metric)
 
     def test_no_mutation_mo_greater_than_ed(self) -> None:
         """Test that calculate_m does not mutate the WeatherMetrics argument when mo > ed."""
-        # TODO: Complete this unit test and remove this TODO
+        some_weather_metric = WeatherMetrics(1, 1, 0.0, 0.0, 0.0, 0.0)
+        previous_id = id(some_weather_metric)
+        ffwi.calculate_m(some_weather_metric, 0.0, 1.0)
+        assert previous_id == id(some_weather_metric)
 
 
 @pytest.fixture
@@ -86,7 +98,35 @@ def test_ffmc_against_ground_truth(sample_data) -> None:
     dc = ffwi.INITIAL_DC
 
     inputs, outputs = sample_data
-    # TODO: Complete this test and remove this TODO.
+
+    ffmc = ffwi.calculate_ffmc(inputs[0], ffmc)
+    dmc = ffwi.calculate_dmc(inputs[0], dmc)
+    dc = ffwi.calculate_dc(inputs[0], dc)
+    isi = ffwi.calculate_isi(inputs[0], ffmc)
+    bui = ffwi.calculate_bui(dmc, dc)
+    fwi = ffwi.calculate_fwi(isi, bui)
+
+    assert outputs[0].ffmc == round(ffmc, 1)
+    assert outputs[0].dmc == round(dmc, 1)
+    assert outputs[0].dc == round(dc, 1)
+    assert outputs[0].isi == round(isi, 1)
+    assert outputs[0].bui == round(bui, 1)
+    assert outputs[0].fwi == round(fwi, 1)
+
+    for i in range(1, len(inputs)):
+        ffmc = ffwi.calculate_ffmc(inputs[i], ffmc)
+        dmc = ffwi.calculate_dmc(inputs[i], dmc)
+        dc = ffwi.calculate_dc(inputs[i], dc)
+        isi = ffwi.calculate_isi(inputs[i], ffmc)
+        bui = ffwi.calculate_bui(dmc, dc)
+        fwi = ffwi.calculate_fwi(isi, bui)
+
+        assert outputs[i].ffmc == round(ffmc, 1)
+        assert outputs[i].dmc == round(dmc, 1)
+        assert outputs[i].dc == round(dc, 1)
+        assert outputs[i].isi == round(isi, 1)
+        assert outputs[i].bui == round(bui, 1)
+        assert outputs[i].fwi == round(fwi, 1)
 
 
 if __name__ == '__main__':

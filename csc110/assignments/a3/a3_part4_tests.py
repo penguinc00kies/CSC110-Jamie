@@ -28,9 +28,9 @@ class TestCalculateMr:
 
     def test_equation_3a_branch(self) -> None:
         """Test the branch calculate_mr that contains Equation 3a."""
-        expected = 98.70101979045725
+        expected = 98.70101979
         actual = ffwi.calculate_mr(2.4, 51.0)
-        assert actual == expected
+        assert pytest.approx(actual) == expected
 
     def test_equation_3b_branch(self) -> None:
         """Test the branch calculate_mr that contains Equation 3b."""

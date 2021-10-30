@@ -19,7 +19,6 @@ This file is Copyright (c) 2021 Mario Badr and Tom Fairgrieve.
 import csv
 import plotly.graph_objects as go
 
-import a3_ffwi_system
 from a3_ffwi_system import WeatherMetrics, FfwiOutput
 import a3_ffwi_system as ffwi
 
@@ -94,9 +93,12 @@ def calculate_ffwi_outputs(readings: list[WeatherMetrics]) -> dict[tuple[int, in
     ffwi_mapping[(readings[0].month, readings[0].day)] = some_ffwi_output
 
     for i in range(1, len(readings)):
-        ffmc = ffwi.calculate_ffmc(readings[i], ffwi_mapping[(readings[i-1].month, readings[i-1].day)].ffmc)
-        dmc = ffwi.calculate_dmc(readings[i], ffwi_mapping[(readings[i - 1].month, readings[i - 1].day)].dmc)
-        dc = ffwi.calculate_dc(readings[i], ffwi_mapping[(readings[i - 1].month, readings[i - 1].day)].dc)
+        ffmc = ffwi.calculate_ffmc(readings[i], ffwi_mapping[(readings[i - 1].month,
+                                                              readings[i - 1].day)].ffmc)
+        dmc = ffwi.calculate_dmc(readings[i], ffwi_mapping[(readings[i - 1].month,
+                                                            readings[i - 1].day)].dmc)
+        dc = ffwi.calculate_dc(readings[i], ffwi_mapping[(readings[i - 1].month,
+                                                          readings[i - 1].day)].dc)
         isi = ffwi.calculate_isi(readings[i], ffmc)
         bui = ffwi.calculate_bui(dmc, dc)
         fwi = ffwi.calculate_fwi(isi, bui)
@@ -164,11 +166,11 @@ if __name__ == '__main__':
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (Delete the "#" and space before each line.)
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
-    # python_ta.check_all(config={
-    #     'allowed-io': ['load_data'],
-    #     'extra-imports': ['python_ta.contracts', 'csv', 'plotly.graph_objects', 'a3_ffwi_system'],
-    #     'max-line-length': 100,
-    #     'max-args': 6,
-    #     'max-locals': 25,
-    #     'disable': ['R1705'],
-    # })
+    python_ta.check_all(config={
+        'allowed-io': ['load_data'],
+        'extra-imports': ['python_ta.contracts', 'csv', 'plotly.graph_objects', 'a3_ffwi_system'],
+        'max-line-length': 100,
+        'max-args': 6,
+        'max-locals': 25,
+        'disable': ['R1705'],
+    })

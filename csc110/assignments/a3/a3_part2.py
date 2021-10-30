@@ -51,8 +51,8 @@ def create_model_owc(text: str) -> tuple[int, dict[str, list[str]]]:
     """
     word_list = str.split(text)
     context_model = {}
-    for i in range(len(word_list)-1):
-        update_follow_list(context_model, word_list[i], word_list[i+1])
+    for i in range(len(word_list) - 1):
+        update_follow_list(context_model, word_list[i], word_list[i + 1])
     return (len(word_list), context_model)
 
 

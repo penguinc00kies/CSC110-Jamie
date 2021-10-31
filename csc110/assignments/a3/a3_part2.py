@@ -32,9 +32,6 @@ def update_follow_list(model: dict[str, list[str]], word: str, follow_word: str)
     """
     if word not in model:
         model[word] = []
-    #     model[word].append(follow_word)
-    # elif word in model and follow_word not in model[word]:
-    #     model[word].append(follow_word)
     model[word].append(follow_word)
 
 
@@ -51,6 +48,7 @@ def create_model_owc(text: str) -> tuple[int, dict[str, list[str]]]:
     """
     word_list = str.split(text)
     context_model = {}
+
     for i in range(len(word_list) - 1):
         update_follow_list(context_model, word_list[i], word_list[i + 1])
     return (len(word_list), context_model)
@@ -82,6 +80,7 @@ def choose_from_follow_list(key: str, transitions: dict[str, list[str]]) -> str:
     follow_list = transitions[key]
     random_word = random.choice(follow_list)
     follow_list.remove(random_word)
+
     if follow_list == []:
         transitions.pop(key)
     return random_word
@@ -119,6 +118,7 @@ def generate_text_owc(count: int, transitions: dict[str, list[str]]) -> str:
             current_word = word_added
         else:
             current_word = choose_from_keys(transitions)
+
         word_added = choose_from_follow_list(current_word, transitions)
         words_so_far.append(word_added)
 
@@ -152,10 +152,10 @@ if __name__ == '__main__':
     # When you are ready to check your work with python_ta, uncomment the following lines.
     # (Delete the "#" and space before each line.)
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
-    # python_ta.check_all(config={
-    #     'allowed-io': ['run_example'],
-    #     'extra-imports': ['python_ta.contracts', 'random'],
-    #     'max-line-length': 100,
-    #     'max-nested-blocks': 4,
-    #     'disable': ['R1705', 'C0200']
-    # })
+    python_ta.check_all(config={
+        'allowed-io': ['run_example'],
+        'extra-imports': ['python_ta.contracts', 'random'],
+        'max-line-length': 100,
+        'max-nested-blocks': 4,
+        'disable': ['R1705', 'C0200']
+    })

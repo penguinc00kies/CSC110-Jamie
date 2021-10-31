@@ -81,31 +81,20 @@ def calculate_ffwi_outputs(readings: list[WeatherMetrics]) -> dict[tuple[int, in
     """
     ffwi_mapping = {}
 
-    ffmc = ffwi.calculate_ffmc(readings[0], ffwi.INITIAL_FFMC)
-    dmc = ffwi.calculate_dmc(readings[0], ffwi.INITIAL_DMC)
-    dc = ffwi.calculate_dc(readings[0], ffwi.INITIAL_DC)
-    isi = ffwi.calculate_isi(readings[0], ffmc)
-    bui = ffwi.calculate_bui(dmc, dc)
-    fwi = ffwi.calculate_fwi(isi, bui)
+    ffmc = ffwi.INITIAL_FFMC
+    dmc = ffwi.INITIAL_DMC
+    dc = ffwi.INITIAL_DC
 
-    some_ffwi_output = FfwiOutput(ffmc, dmc, dc, isi, bui, fwi)
-
-    ffwi_mapping[(readings[0].month, readings[0].day)] = some_ffwi_output
-
-    for i in range(1, len(readings)):
-        ffmc = ffwi.calculate_ffmc(readings[i], ffwi_mapping[(readings[i - 1].month,
-                                                              readings[i - 1].day)].ffmc)
-        dmc = ffwi.calculate_dmc(readings[i], ffwi_mapping[(readings[i - 1].month,
-                                                            readings[i - 1].day)].dmc)
-        dc = ffwi.calculate_dc(readings[i], ffwi_mapping[(readings[i - 1].month,
-                                                          readings[i - 1].day)].dc)
-        isi = ffwi.calculate_isi(readings[i], ffmc)
+    for r in readings:
+        ffmc = ffwi.calculate_ffmc(r, ffmc)
+        dmc = ffwi.calculate_dmc(r, dmc)
+        dc = ffwi.calculate_dc(r, dc)
+        isi = ffwi.calculate_isi(r, ffmc)
         bui = ffwi.calculate_bui(dmc, dc)
         fwi = ffwi.calculate_fwi(isi, bui)
 
         some_ffwi_output = FfwiOutput(ffmc, dmc, dc, isi, bui, fwi)
-
-        ffwi_mapping[(readings[i].month, readings[i].day)] = some_ffwi_output
+        ffwi_mapping[(r.month, r.day)] = some_ffwi_output
 
     return ffwi_mapping
 

@@ -99,21 +99,7 @@ def test_ffmc_against_ground_truth(sample_data) -> None:
 
     inputs, outputs = sample_data
 
-    ffmc = ffwi.calculate_ffmc(inputs[0], ffmc)
-    dmc = ffwi.calculate_dmc(inputs[0], dmc)
-    dc = ffwi.calculate_dc(inputs[0], dc)
-    isi = ffwi.calculate_isi(inputs[0], ffmc)
-    bui = ffwi.calculate_bui(dmc, dc)
-    fwi = ffwi.calculate_fwi(isi, bui)
-
-    assert outputs[0].ffmc == round(ffmc, 1)
-    assert outputs[0].dmc == round(dmc, 1)
-    assert outputs[0].dc == round(dc, 1)
-    assert outputs[0].isi == round(isi, 1)
-    assert outputs[0].bui == round(bui, 1)
-    assert outputs[0].fwi == round(fwi, 1)
-
-    for i in range(1, len(inputs)):
+    for i in range(0, len(inputs)):
         ffmc = ffwi.calculate_ffmc(inputs[i], ffmc)
         dmc = ffwi.calculate_dmc(inputs[i], dmc)
         dc = ffwi.calculate_dc(inputs[i], dc)

@@ -1,5 +1,6 @@
 """TEST"""
 from typing import Callable
+import math
 
 s = 'gehknkwgnknwglllllslvglvmlsvlkvlmlkvlkmnblenmklenokgwnfnq da,.mckldnvksnvklwsvklsnmvklsnvqmlm,mzvjsdv, ,sdv'
 

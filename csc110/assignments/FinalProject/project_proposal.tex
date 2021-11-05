@@ -1,0 +1,52 @@
+\documentclass[fontsize=11pt]{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphicx}
+\title{CSC110 Project Proposal: The Spread of Hate: How the Pandemic Circulated Anti-Asian Discrimination}
+\author{Jamie Yi, Andy Feng, Jay Lee}
+\date{Friday, November 5, 2021}
+\graphicspath{{./images/}}
+\begin{document}
+    \maketitle
+
+    \section*{Problem Description and Research Question}
+
+    It is a commonly accepted theory that the COVID-19 virus originated in Wuhan, China. As this became common knowledge alongside the fact that the first human case of COVID-19 was also in Wuhan, some members of the western public began to unjustly blame people of Asian descent (AAPI) for the pandemic. In the US, the decline of public opinion was propagated by then-president Trump using the term ‘Chinese Virus’ on Twitter and other legislators using terms such as ‘Wuhan Virus’ (Brian, 2021, p. 6). These statements essentially endorsed public hate speech. They encouraged feelings of xenophobia and (false) liability towards AAPIs. The number of threats, racist abuse, and discrimination aimed at AAPIs saw an increase as well. Thus, anti-Asian sentiment grew and there was an increase in the number of hate crimes motivated against AAPIs (p. 6). Canada also saw an increase in hate crimes (p. 3); however, it was not motivated by any prominent Canadians. Canadian public officials did not endorse any hate speech and other such actions on social media or on news coverage. One of our goals is to draw a correlation between the rate of hate crimes occurring and prominent public officials encouraging the sentiments behind them.
+
+
+    All three of us are Asian-Canadians, so this problem domain is particularly relevant and interesting to us. When Canada and the US pride themselves on being multicultural, it matters to us that our demographic is being treated as equally as the others. We want to ask: How has the frequency of anti-Asian hate crimes increased in response to the pandemic (and were there any secondary factors affecting the increase)? Does the increase of hate crimes in an area correlate to the proportion of the population that is AAPI? Our dataset contains data from Canadian and American cities. However, we only plan on aggregating data for the American cities. We also look for trends by comparing the red (Republican) and blue (Democratic) states. Then if we find any patterns or correlations, we will see if they can accurately predict the increase in hate crimes in Canadian cities. This is keeping in mind that was less Canadian vocal hate directed at AAPIs.
+    \section*{Dataset Description}
+
+    The data set we obtained is based on a report released by the Center for the Study of Hate and Extremism at California State University, San Bernardino in May 2021 (Levin, 2021). The report includes relevant data on Anti-Asian hate crimes we plan to extract and use for our project and analysis. The title of this data frame is “Anti-AAPI Hate Crime Data for Select U.S. Cities/U.S. Counties and Major Cities in Canada (2020-2019)”. It includes 8 columns/variables: (US City Population / US County Population / Canada City Population, Total Hate Crimes 2019, Total Hate Crimes 2020, \% Change for Total Hate Crimes 2019-2020, \% of Population – AAPI, Change Anti-Asian Hate Crimes, 2019 Anti-Asian, 2020 Anti-Asian) and each row/observation in the data frame represents a major city or county in the US or a major city in Canada. Given that the data frame is contained inside a .pdf file, we will first work to clean up and reformat the data frame to a state that we can further manipulate.
+
+    Included below is an example row/observation in the data frame:\\
+    \includegraphics[scale=0.33]{image.png}
+
+    \section*{Computational Plan}
+
+    Since we will draw data from different sources, we will have to synchronise the format so that the rows and the columns follow the same things. After we organize the data into same format, we will first clean the data up manually by organising them into CSV file format. We will then aggregate the data into program-readable format. From there, we will perform various calculations and data analysis. They include:
+    \begin{itemize}
+        \item  Comparison between hate-crime to total Asian population in 2019 and 2020 in specific locations
+        \item Validate whether predicting the hate-crime to total Asian population ratio of Canada is possible by looking at hate-crime to total Asian population ratio of America
+        \item     Attempt to find possible correlations in data, such as relationships between hate-crime ratio and certain cities or relationships between the total Asian population to the hate-crime/population ratio (is the growth linear or will there be less Asian hate crimes in Asian dominant cities?)
+        \item     If applicable, we will also try to represent the correlation between certain datasets with mathematical equations, like linear or quadratic equations.
+        \item     Since most of the data is geographically affiliated with the states in U.S., we can also try to observe the relationship between political preference of the state and the ratio of the Asian hate crime. In order to visually represent the political preference of the state of interest, we will use plotly’s feature, a python library that we will explain later, to colour code the map with blue and red.
+    \end{itemize}
+    After all the calculations and the analysis, we will use plotly.express and Panda to make bubble maps to represent the different hate crime ratios pre-COVID and post-COVID using varying bubble sizes and color codes depending on the size of ratios, and to draw a graph to show correlations between datasets, if any.
+    \begin{itemize}
+        \item     Panda is used to read the csv file and to extract data from it, it will return a dataframe with the appropriate attributes as laid out in the columns of the csv file, saving us the trouble of having to create a new dataclass for our data. Also, a dataframe is necessary to work with plotly.express.scatter\_geo.
+        \item     plotly.express.scatter makes it easy to represent our data on an interactable map, since it can take the dataframe we made with Panda as an argument and create a map with various data points at the longitudes and latitudes we want.
+    \end{itemize}
+    \section*{References}
+    Bubble maps. Plotly. (n.d.). Retrieved November 4, 2021, from https://plotly.com/python/bubble-maps/
+    \\\\
+    Report to the Nation: Anti-Asian Prejudice \& Hate Crime - Data Tables
+    Levin, B. (2021). (rep.). Report to the Nation: Anti-Asian Prejudice \& Hate Crime (pp. 1–34). San Bernardino, California: Center for the Study of Hate and Extremism.
+% NOTE: LaTeX does have a built-in way of generating references automatically,
+% but it's a bit tricky to use so we STRONGLY recommend writing your references
+% manually, using a standard academic format like APA or MLA.
+% (E.g., https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/general_format.html)
+
+\end{document}
+

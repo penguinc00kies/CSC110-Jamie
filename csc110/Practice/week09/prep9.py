@@ -49,8 +49,8 @@ def is_strong_password(password: str) -> bool:
     >>> is_strong_password('ilovelamp')
     False
     """
-    return any([str.isdigit(x) for x in password]) and len(password) >= 6 and \
-           any([str.islower(x) for x in password]) and any([str.isupper(x) for x in password])
+    return any(str.isdigit(x) for x in password) and len(password) >= 6 and \
+        any(str.islower(x) for x in password) and any(str.isupper(x) for x in password)
 
 
 def remove_weak_passwords(passwords: list[str]) -> list[str]:
@@ -153,11 +153,10 @@ def phi(n: int) -> int:
     1
     """
     coprime_counter = 0
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         if math.gcd(i, n) == 1:
             coprime_counter += 1
     return coprime_counter
-
 
 
 @dataclass

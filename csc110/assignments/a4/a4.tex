@@ -1,0 +1,119 @@
+\documentclass[fontsize=11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+
+\title{CSC110 Assignment 4: Number Theory, Cryptography, and Algorithm Running Time}
+\author{TODO: FILL IN YOUR NAME HERE}
+\date{\today}
+
+% Some useful LaTeX commands. You are free to use these or not, and also add your own.
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+\begin{document}
+\maketitle
+
+\section*{Part 1: Practice with Proofs}
+
+\begin{enumerate}
+
+\item[1.] Statement to prove:
+
+$$\forall a, k, n \in \Z,~ \gcd(a, n) = 1 \Rightarrow \gcd(a + kn, n) = 1$$
+
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+
+\item[2.] Statement to prove (we've expanded the definition of Omega for you!):
+
+$$\exists c, n_0 \in \R^+,~ \forall n \in \N,~ n \geq n_0 \Rightarrow \log_{3} n - \log_{11} n \geq c \cdot \log_{14} n$$
+
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+
+\item[3.] Statement to prove (we haven't expanded the definition of Big-O for you, but we encourage you to do so yourself):
+
+$$\forall f, g: \N \to \R^{\geq 0},~ g \in \cO(f) \land \big(\forall m \in \N,~ f(m) \geq 1 \big) \Rightarrow g \in \cO(\floor{f})$$
+
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+
+\end{enumerate}
+
+\newpage
+
+\section*{Part 2: Generating Coprime Numbers}
+
+\begin{enumerate}
+
+\item[1.]
+Not to be handed in.
+
+\item[2.]
+Complete this part in the provided \texttt{a4\_part2.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\item[3.]
+Prove that each loop invariant holds.
+
+\begin{enumerate}
+\item[a.] Loop Invariant 1
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+
+\item[b.] Loop Invariant 2
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+
+\item[c.] Loop Invariant 3
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+
+\item[d.] Loop Invariant 4
+\begin{proof}
+TODO: Your proof goes here.
+\end{proof}
+\end{enumerate}
+
+\item[4.]
+Complete this part in the provided \texttt{a4\_part2.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\item[5.]
+Complete this part in the provided \texttt{a4\_part2.py} starter file.
+Do \textbf{not} include your solution in this file.
+\end{enumerate}
+
+\newpage
+
+\section*{Part 3: Running-Time Analysis}
+
+\begin{enumerate}
+\item[1.]
+TODO: Running-time analysis of \texttt{coprime\_to\_2\_and\_3}.
+
+\item[2.]
+TODO: Running-time analysis of \texttt{starting\_coprime\_numbers}.
+
+\item[3.]
+TODO: Running-time analysis of \texttt{coprime\_to\_all}.
+\end{enumerate}
+
+\section*{Part 4: Two New Cryptosystems}
+
+Complete this part in the provided \texttt{a4\_part4.py} starter file.
+Do \textbf{not} include your solution in this file.
+
+\end{document}

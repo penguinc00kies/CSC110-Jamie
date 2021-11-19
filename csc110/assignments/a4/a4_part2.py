@@ -74,14 +74,19 @@ def coprime_to_all(primes: set[int], n: int) -> list[int]:
           and may NOT modify it (even though it is not as efficient as it could be!!).
         - You will find the math.prod function useful.
     """
-    # primes.add(math.prod(primes))
-    # coprime_list = starting_coprime_numbers(primes)
-    # coprime_list = [k for k in coprime_list if k < n]
     nums_so_far = starting_coprime_numbers(primes)
-    # while nums_so_far[-2] + difference < n:
-        # assert all(math.gcd(k, p) == 1 for k in nums_so_far for p in primes)
-        # assert all(nums_so_far[i] < nums_so_far[i + 1] for i in range(0, len(nums_so_far) - 1))
-        # assert all((not(math.gcd(k, p) == 1) or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1) for p in primes)
+    l = len(nums_so_far)
+    product = math.prod(primes)
+    while nums_so_far[-l] + product < n:
+        assert all(math.gcd(k, p) == 1 for k in nums_so_far for p in primes)
+        assert all(nums_so_far[i] + product == nums_so_far[i + l] for i in range(0, len(nums_so_far) - l))
+        assert all(nums_so_far[i] < nums_so_far[i + 1] for i in range(0, len(nums_so_far) - 1))
+        assert all((not(all(math.gcd(k, p) == 1 for p in primes)) or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1))
+
+        next_number = nums_so_far[-l] + product
+        list.append(nums_so_far, next_number)
+
+    return nums_so_far
 
 
 def starting_coprime_numbers(primes: set[int]) -> list[int]:

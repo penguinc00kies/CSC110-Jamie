@@ -92,6 +92,24 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Doctest coprime_to_2_and_3" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="csc110" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assignments/a4" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/assignments/a4/a4_part2.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="coprime_to_2_and_3" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="Doctest coprime_to_all" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -114,6 +132,7 @@
       <list>
         <item itemvalue="Python.a4_part2" />
         <item itemvalue="Python tests.Doctest coprime_to_all" />
+        <item itemvalue="Python tests.Doctest coprime_to_2_and_3" />
         <item itemvalue="Python.L26" />
         <item itemvalue="Python.L18" />
       </list>

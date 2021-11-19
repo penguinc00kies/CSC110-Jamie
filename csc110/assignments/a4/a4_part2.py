@@ -40,6 +40,10 @@ def coprime_to_2_and_3(n: int) -> list[int]:
     while nums_so_far[-2] + 6 < n:
         # Note: Write four assert statements here expressing the four loop invariants from the
         # assignment handout. These statements should be at the top of the loop body.
+        assert all(math.gcd(k, 2) == math.gcd(k, 3) == 1 for k in nums_so_far)
+        assert all(nums_so_far[i] + 6 == nums_so_far[i + 2] for i in range(0, len(nums_so_far) - 2))
+        assert all(nums_so_far[i] < nums_so_far[i + 1] for i in range(0, len(nums_so_far) - 1))
+        assert all((not(math.gcd(k, 2) == 1 and math.gcd(k, 3) == 1) or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1))
 
         next_number = nums_so_far[-2] + 6
         list.append(nums_so_far, next_number)
@@ -70,6 +74,14 @@ def coprime_to_all(primes: set[int], n: int) -> list[int]:
           and may NOT modify it (even though it is not as efficient as it could be!!).
         - You will find the math.prod function useful.
     """
+    # primes.add(math.prod(primes))
+    # coprime_list = starting_coprime_numbers(primes)
+    # coprime_list = [k for k in coprime_list if k < n]
+    nums_so_far = starting_coprime_numbers(primes)
+    # while nums_so_far[-2] + difference < n:
+        # assert all(math.gcd(k, p) == 1 for k in nums_so_far for p in primes)
+        # assert all(nums_so_far[i] < nums_so_far[i + 1] for i in range(0, len(nums_so_far) - 1))
+        # assert all((not(math.gcd(k, p) == 1) or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1) for p in primes)
 
 
 def starting_coprime_numbers(primes: set[int]) -> list[int]:

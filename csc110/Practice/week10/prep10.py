@@ -261,17 +261,17 @@ def run_example(spinner: Spinner) -> None:
 
 if __name__ == '__main__':
     import python_ta
-    python_ta.check_all(config={
-        'max-line-length': 100,
-        'extra-imports': ['python_ta.contracts', 'random', 'tkinter'],
-        'disable': ['R1705', 'C0200'],
-        'max-args': 7
-    })
-
-    import python_ta.contracts
-    python_ta.contracts.DEBUG_CONTRACTS = False
-    python_ta.contracts.check_all_contracts()
-
-    import doctest
-
-    doctest.testmod()
+    # python_ta.check_all(config={
+    #     'max-line-length': 100,
+    #     'extra-imports': ['python_ta.contracts', 'random', 'tkinter'],
+    #     'disable': ['R1705', 'C0200'],
+    #     'max-args': 7
+    # })
+    # 
+    # import python_ta.contracts
+    # python_ta.contracts.DEBUG_CONTRACTS = False
+    # python_ta.contracts.check_all_contracts()
+    #
+    # import doctest
+    #
+    # doctest.testmod()

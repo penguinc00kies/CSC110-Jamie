@@ -1,3 +1,0 @@
-IdeaVIM
-name.kropp.intellij.makefile
-ru.meanmail.plugin.requirements

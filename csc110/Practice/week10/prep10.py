@@ -111,7 +111,6 @@ class Spinner:
         Preconditions:
             - size >= 1
         """
-        # TODO: complete this method body
         self.slots = size
         self.position = 0
 
@@ -124,7 +123,6 @@ class Spinner:
         Preconditions:
             - force >= 0
         """
-        # TODO: complete this method body
         self.position = (self.position + force) % self.slots
 
     def spin_randomly(self) -> None:
@@ -138,7 +136,6 @@ class Spinner:
         >>> 0 <= s.position < 8
         True
         """
-        # TODO: complete this method body
         self.position = random.randint(0, self.slots - 1)
 
     def draw(self, canvas: tk.Canvas) -> None:
@@ -167,9 +164,9 @@ class Spinner:
         width = canvas.winfo_reqwidth()
         x, y, radius = width // 2, height // 2, width // 4
 
-        # TODO: complete this method body
         for i in range(0, self.slots):
-            draw_arc(canvas, x, y, radius, i * 360/self.slots, (i + 1) * 360 / self.slots, self.get_colour(canvas, i))
+            draw_arc(canvas, x, y, radius, i * 360 / self.slots,
+                     (i + 1) * 360 / self.slots, self.get_colour(canvas, i))
         # Draw each the sector for slot i using the draw_arc function and get_colour method.
         # You will need to calculate the start and stop angles by doing some math. As a hint,
         # slot 0's sector has a start angle of 0.
@@ -264,17 +261,17 @@ def run_example(spinner: Spinner) -> None:
 
 if __name__ == '__main__':
     import python_ta
-    # python_ta.check_all(config={
-    #     'max-line-length': 100,
-    #     'extra-imports': ['python_ta.contracts', 'random', 'tkinter'],
-    #     'disable': ['R1705', 'C0200'],
-    #     'max-args': 7
-    # })
-    #
-    # import python_ta.contracts
-    # python_ta.contracts.DEBUG_CONTRACTS = False
-    # python_ta.contracts.check_all_contracts()
-    #
-    # import doctest
-    #
-    # doctest.testmod()
+    python_ta.check_all(config={
+        'max-line-length': 100,
+        'extra-imports': ['python_ta.contracts', 'random', 'tkinter'],
+        'disable': ['R1705', 'C0200'],
+        'max-args': 7
+    })
+
+    import python_ta.contracts
+    python_ta.contracts.DEBUG_CONTRACTS = False
+    python_ta.contracts.check_all_contracts()
+
+    import doctest
+
+    doctest.testmod()

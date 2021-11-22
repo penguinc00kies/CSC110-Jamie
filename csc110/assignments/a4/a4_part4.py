@@ -34,6 +34,7 @@ def grid_encrypt(k: int, plaintext: str) -> str:
     >>> grid_encrypt(8, 'DAVID AND MARIO TEACH COMPUTER SCIENCE!!')
     'DDTMCA EPIVMAUEIACTNDRHEC I REAOC !N OS!'
     """
+    return grid_to_ciphertext(plaintext_to_grid(k, plaintext))
 
 
 def grid_decrypt(k: int, ciphertext: str) -> str:
@@ -47,6 +48,7 @@ def grid_decrypt(k: int, ciphertext: str) -> str:
     >>> grid_decrypt(8, 'DDTMCA EPIVMAUEIACTNDRHEC I REAOC !N OS!')
     'DAVID AND MARIO TEACH COMPUTER SCIENCE!!'
     """
+    return grid_to_plaintext(ciphertext_to_grid(k, ciphertext))
 
 
 def plaintext_to_grid(k: int, plaintext: str) -> list[list[str]]:
@@ -57,6 +59,16 @@ def plaintext_to_grid(k: int, plaintext: str) -> list[list[str]]:
         - len(plaintext) % k == 0
         - plaintext != ''
     """
+    grid = []
+    c = len(plaintext) // k
+    for i in range(0, c):
+        row = []
+        for j in range(i * k, (i + 1) * k):
+            row.append(plaintext[j])
+        grid.append(row)
+
+    return grid
+
 
 
 def grid_to_ciphertext(grid: list[list[str]]) -> str:
@@ -67,6 +79,12 @@ def grid_to_ciphertext(grid: list[list[str]]) -> str:
         - grid[0] != []
         - all({len(row1) == len(row2) for row1 in grid for row2 in grid})
     """
+    ciphertext = ''
+    for i in range(0, len(grid[0])):
+        for j in range(0, len(grid)):
+            ciphertext = ciphertext + grid[j][i]
+
+    return ciphertext
 
 
 def ciphertext_to_grid(k: int, ciphertext: str) -> list[list[str]]:
@@ -79,6 +97,16 @@ def ciphertext_to_grid(k: int, ciphertext: str) -> list[list[str]]:
         - len(ciphertext) % k == 0
         - ciphertext != ''
     """
+    grid = []
+    c = len(ciphertext) // k
+    for i in range(0, c):
+        row = []
+        for j in range(0, len(ciphertext)):
+            if j % c == i:
+                row.append(ciphertext[j])
+        grid.append(row)
+
+    return grid
 
 
 def grid_to_plaintext(grid: list[list[str]]) -> str:
@@ -90,6 +118,12 @@ def grid_to_plaintext(grid: list[list[str]]) -> str:
         - grid[0] != []
         - all({len(row1) == len(row2) for row1 in grid for row2 in grid})
     """
+    plaintext = ''
+    for i in range(0, len(grid)):
+        for j in range(0, len(grid[i])):
+            plaintext = plaintext + grid[i][j]
+
+    return plaintext
 
 
 ################################################################################
@@ -103,6 +137,19 @@ def grid_break(ciphertext: str, candidates: set[str]) -> set[int]:
     >>> grid_break('DDTMCA EPIVMAUEIACTNDRHEC I REAOC !N OS!', candidate_words) == {8, 10}
     True
     """
+    possible_keys = set()
+    number_of_rows = {k for k in range(1, len(ciphertext) + 1) if len(ciphertext) % k == 0}
+    for word in candidates:
+        for row_length in number_of_rows:
+            for i in range(0, len(ciphertext) // row_length):
+                row = []
+                for j in range(0, len(ciphertext)):
+                    if j % row_length == i:
+                        row.append(ciphertext[j])
+                if word in ''.join(row):
+                    possible_keys.add(len(ciphertext) // row_length)
+
+    return possible_keys
 
 
 def run_example_break(ciphertext_file: str, candidates: set[str]) -> list[str]:
@@ -117,7 +164,13 @@ def run_example_break(ciphertext_file: str, candidates: set[str]) -> list[str]:
     # (Not to be handed in) Try completing this function by calling grid_break and returning a
     # list of the possible plaintext messages.
 
-    return [ciphertext] + list(candidates)  # This is a dummy line, please replace it!
+    # return [ciphertext] + list(candidates)  # This is a dummy line, please replace it!
+    possible_plaintexts = []
+    possible_keys = grid_break(ciphertext, candidates)
+    for key in possible_keys:
+        possible_plaintexts.append(grid_decrypt(key, ciphertext))
+
+    return possible_plaintexts
 
 
 ################################################################################

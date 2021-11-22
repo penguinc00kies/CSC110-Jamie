@@ -70,7 +70,6 @@ def plaintext_to_grid(k: int, plaintext: str) -> list[list[str]]:
     return grid
 
 
-
 def grid_to_ciphertext(grid: list[list[str]]) -> str:
     """Return the ciphertext corresponding to the given grid.
 
@@ -191,7 +190,12 @@ def permutation_grid_encrypt(k: int, perm: list[int], plaintext: str) -> str:
     >>> permutation_grid_encrypt(8, [3, 2, 5, 0, 7, 1, 6, 4],
     ...                          'DAVID AND MARIO TEACH COMPUTER SCIENCE!!')
     'IACTNVMAUE I REDDTMCN OS!A EPIAOC !DRHEC'
+    >>> permutation_grid_encrypt(8, [1, 0, 2, 3, 4, 5, 6, 7],
+    ...                          'DAVID AND MARIO TEACH COMPUTER SCIENCE!!')
+    'A EPIDDTMCVMAUEIACTNDRHEC I REAOC !N OS!'
     """
+    grid = plaintext_to_grid(8, plaintext)
+    return grid_to_ciphertext(shift_columns(perm, grid))
 
 
 def permutation_grid_decrypt(k: int, perm: list[int], ciphertext: str) -> str:
@@ -212,6 +216,72 @@ def permutation_grid_decrypt(k: int, perm: list[int], ciphertext: str) -> str:
     ...                          'IACTNVMAUE I REDDTMCN OS!A EPIAOC !DRHEC')
     'DAVID AND MARIO TEACH COMPUTER SCIENCE!!'
     """
+    grid = ciphertext_to_grid(8, ciphertext)
+    return grid_to_plaintext(unshift_columns(perm, grid))
+
+
+def shift_columns(perm: list[int], grid: list[list[str]]) -> list[list[str]]:
+    """Return the grid with its columns moved around as according to perm
+
+    Preconditions:
+        - len(perm) = len(grid[0])
+
+    >>> original_grid = [['D', 'A', 'V', 'I', 'D', ' ', 'A', 'N'],
+    ...                   ['D', ' ', 'M', 'A', 'R', 'I', 'O', ' '],
+    ...                   ['T', 'E', 'A', 'C', 'H', ' ', 'C', 'O'],
+    ...                   ['M', 'P', 'U', 'T', 'E', 'R', ' ', 'S'],
+    ...                   ['C', 'I', 'E', 'N', 'C', 'E', '!', '!']]
+    >>> shifted_grid = [['I', 'V', ' ', 'D', 'N', 'A', 'A', 'D'],
+    ...                   ['A', 'M', 'I', 'D', ' ', ' ', 'O', 'R'],
+    ...                   ['C', 'A', ' ', 'T', 'O', 'E', 'C', 'H'],
+    ...                   ['T', 'U', 'R', 'M', 'S', 'P', ' ', 'E'],
+    ...                   ['N', 'E', 'E', 'C', '!', 'I', '!', 'C']]
+    >>> shift_columns([3, 2, 5, 0, 7, 1, 6, 4], original_grid) == shifted_grid
+    True
+    >>> shift_columns([0, 1, 2, 3, 4, 5, 6, 7], original_grid) == original_grid
+    True
+    """
+    permutated_list = []
+    for i in range(0, len(grid)):
+        row = []
+        for j in perm:
+            row.append(grid[i][j])
+        permutated_list.append(row)
+
+    return permutated_list
+
+
+def unshift_columns(perm: list[int], grid: list[list[str]]) -> list[list[str]]:
+    """Return the grid with its columns restored to their original position as according to perm
+
+    Preconditions:
+        - len(perm) = len(grid[0])
+
+    >>> original_grid = [['D', 'A', 'V', 'I', 'D', ' ', 'A', 'N'],
+    ...                   ['D', ' ', 'M', 'A', 'R', 'I', 'O', ' '],
+    ...                   ['T', 'E', 'A', 'C', 'H', ' ', 'C', 'O'],
+    ...                   ['M', 'P', 'U', 'T', 'E', 'R', ' ', 'S'],
+    ...                   ['C', 'I', 'E', 'N', 'C', 'E', '!', '!']]
+    >>> shifted_grid = [['I', 'V', ' ', 'D', 'N', 'A', 'A', 'D'],
+    ...                   ['A', 'M', 'I', 'D', ' ', ' ', 'O', 'R'],
+    ...                   ['C', 'A', ' ', 'T', 'O', 'E', 'C', 'H'],
+    ...                   ['T', 'U', 'R', 'M', 'S', 'P', ' ', 'E'],
+    ...                   ['N', 'E', 'E', 'C', '!', 'I', '!', 'C']]
+    >>> unshift_columns([3, 2, 5, 0, 7, 1, 6, 4], shifted_grid) == original_grid
+    True
+    """
+    permutated_list = []
+    for i in range(0, len(grid)):
+        row = []
+        while len(row) < len(grid[0]):
+            for j in range(0, len(perm)):
+                for k in range(0, len(perm)):
+                    if j == perm[k]:
+                        row.append(grid[i][k])
+
+        permutated_list.append(row)
+
+    return permutated_list
 
 
 if __name__ == '__main__':
@@ -229,7 +299,9 @@ if __name__ == '__main__':
     # })
 
     import python_ta.contracts
+
     python_ta.contracts.check_all_contracts()
 
     import doctest
+
     doctest.testmod()

@@ -43,7 +43,8 @@ def coprime_to_2_and_3(n: int) -> list[int]:
         assert all(math.gcd(k, 2) == math.gcd(k, 3) == 1 for k in nums_so_far)
         assert all(nums_so_far[i] + 6 == nums_so_far[i + 2] for i in range(0, len(nums_so_far) - 2))
         assert all(nums_so_far[i] < nums_so_far[i + 1] for i in range(0, len(nums_so_far) - 1))
-        assert all((not(math.gcd(k, 2) == 1 and math.gcd(k, 3) == 1) or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1))
+        assert all((not(math.gcd(k, 2) == 1 and math.gcd(k, 3) == 1) or k in nums_so_far)
+                   for k in range(0, nums_so_far[-1] + 1))
 
         next_number = nums_so_far[-2] + 6
         list.append(nums_so_far, next_number)
@@ -75,15 +76,17 @@ def coprime_to_all(primes: set[int], n: int) -> list[int]:
         - You will find the math.prod function useful.
     """
     nums_so_far = starting_coprime_numbers(primes)
-    l = len(nums_so_far)
+    phi = len(nums_so_far)
     product = math.prod(primes)
-    while nums_so_far[-l] + product < n:
+    while nums_so_far[-phi] + product < n:
         assert all(math.gcd(k, p) == 1 for k in nums_so_far for p in primes)
-        assert all(nums_so_far[i] + product == nums_so_far[i + l] for i in range(0, len(nums_so_far) - l))
+        assert all(nums_so_far[i] + product == nums_so_far[i + phi]
+                   for i in range(0, len(nums_so_far) - phi))
         assert all(nums_so_far[i] < nums_so_far[i + 1] for i in range(0, len(nums_so_far) - 1))
-        assert all((not(all(math.gcd(k, p) == 1 for p in primes)) or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1))
+        assert all((not(all(math.gcd(k, p) == 1 for p in primes))
+                    or k in nums_so_far) for k in range(0, nums_so_far[-1] + 1))
 
-        next_number = nums_so_far[-l] + product
+        next_number = nums_so_far[-phi] + product
         list.append(nums_so_far, next_number)
 
     return nums_so_far
@@ -124,7 +127,7 @@ if __name__ == '__main__':
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
     # Leave this code uncommented when you submit your files.
     # import python_ta
-    #
+    # 
     # python_ta.check_all(config={
     #     'extra-imports': ['python_ta.contracts', 'math'],
     #     'max-line-length': 100,

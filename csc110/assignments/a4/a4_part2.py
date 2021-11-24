@@ -127,7 +127,7 @@ if __name__ == '__main__':
     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
     # Leave this code uncommented when you submit your files.
     # import python_ta
-    # 
+    #
     # python_ta.check_all(config={
     #     'extra-imports': ['python_ta.contracts', 'math'],
     #     'max-line-length': 100,

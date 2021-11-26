@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93b1bc9f-4435-4c20-9003-ccfda2aebf9e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="93b1bc9f-4435-4c20-9003-ccfda2aebf9e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +43,25 @@
   <component name="PyConsoleOptionsProvider">
     <option name="myIpythonEnabled" value="false" />
   </component>
-  <component name="RunManager" selected="Python.a4_part2">
+  <component name="RunManager" selected="Python.L29">
+    <configuration name="L29" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="csc110" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lectures/week10" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lectures/week10/L29.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="a4_part2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,24 +104,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Doctest permutation_grid_encrypt" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
-      <module name="csc110" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assignments/a4" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/assignments/a4/a4_part4.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="permutation_grid_encrypt" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_FUNCTION" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
     <configuration name="Doctest shift_columns" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.L29" />
         <item itemvalue="Python.a4_part2" />
         <item itemvalue="Python.a4_part4" />
         <item itemvalue="Python tests.Doctest unshift_columns" />
         <item itemvalue="Python tests.Doctest shift_columns" />
-        <item itemvalue="Python tests.Doctest permutation_grid_encrypt" />
       </list>
     </recent_temporary>
   </component>

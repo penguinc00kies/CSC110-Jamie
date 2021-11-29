@@ -43,11 +43,14 @@
   <component name="PyConsoleOptionsProvider">
     <option name="myIpythonEnabled" value="false" />
   </component>
-  <component name="RunManager" selected="Python.L29">
+  <component name="RunManager" selected="Python.tutorial10_part3">
     <configuration name="L29" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lectures/week10" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -62,7 +65,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="a4_part2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="tutorial10_part2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -70,11 +73,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assignments/a4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tutorials/week10" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/assignments/a4/a4_part2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tutorials/week10/tutorial10_part2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -83,7 +86,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="a4_part4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="tutorial10_part3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -91,11 +94,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assignments/a4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tutorials/week10" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/assignments/a4/a4_part4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tutorials/week10/tutorial10_part3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -104,49 +107,49 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Doctest shift_columns" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+    <configuration name="Doctest ListMap.lookup" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assignments/a4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tutorials/week10" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/assignments/a4/a4_part4.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="shift_columns" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tutorials/week10/tutorial10_part2.py" />
+      <option name="CLASS_NAME" value="ListMap" />
+      <option name="METHOD_NAME" value="lookup" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Doctest unshift_columns" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+    <configuration name="Doctest ListMap.pop" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <module name="csc110" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assignments/a4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tutorials/week10" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/assignments/a4/a4_part4.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="unshift_columns" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tutorials/week10/tutorial10_part2.py" />
+      <option name="CLASS_NAME" value="ListMap" />
+      <option name="METHOD_NAME" value="pop" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.tutorial10_part3" />
+        <item itemvalue="Python.tutorial10_part2" />
+        <item itemvalue="Python tests.Doctest ListMap.pop" />
+        <item itemvalue="Python tests.Doctest ListMap.lookup" />
         <item itemvalue="Python.L29" />
-        <item itemvalue="Python.a4_part2" />
-        <item itemvalue="Python.a4_part4" />
-        <item itemvalue="Python tests.Doctest unshift_columns" />
-        <item itemvalue="Python tests.Doctest shift_columns" />
       </list>
     </recent_temporary>
   </component>

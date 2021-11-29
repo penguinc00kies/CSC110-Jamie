@@ -62,20 +62,6 @@ class Restaurant:
 class Customer:
     """A person who orders food.
 
-    TODO: complete this data class by adding the following:
-        1. Two attributes called "name" (a str) and "location" (a tuple[float, float])
-           representing the name and location (latitude, logitude) of this customer.
-           Add both type annotations and descriptions in the docstring.
-        2. Three representation invariants (translated into Python expressions):
-            - The name is non-empty
-            - The latitude is between -90 and 90, inclusive.
-            - The longitude is between -180 and 180, inclusive.
-            Remember to use "self." to refer to each attribute in a representation
-            invariant! (Otherwise they won't be detected by PythonTA.)
-        3. A doctest example under "Sample Usage" that creates a customer named
-            'David' whose location is (44.649, -79.115), and assigns the object to
-            a variable named "david".
-
     Instance Attributes:
         - name: the name of the customer
         - location: a tuple containing the latitude and longitude of the customer
@@ -109,18 +95,12 @@ class Order:
       - courier: the courier assigned to this order (initially None)
       - end_time: the time the order was completed by the courier (initially None)
 
-    TODO: add a NEW representation invariant below that states that every food item
-          in this order is a key in this order's restaurant's menu.
-
     Representation Invariants:
       - self.food_items != {}
       - all(self.food_items[item] > 0 for item in self.food_items)
       - all(food in self.restaurant.menu.keys() for food in self.food_items.keys())
 
     Sample Usage:
-
-    TODO: update the doctest below to be consistent with the changes
-          you made to the Customer data class.
 
     >>> david = Customer('David', (44.649, -79.115))
     >>> mcdonalds = Restaurant(name='McDonalds', address='160 Spadina Ave',\
@@ -153,14 +133,6 @@ class Courier:
 def total_cost(order: Order) -> float:
     """Return the total cost of the food items in this order.
 
-    TODO: add one doctest example for this function that:
-          1. Creates a valid customer and restaurant, where the restaurant
-             has at least two different foods on the menu.
-          2. Creates an order for this customer and restaurant that orders
-             >= 2 different food items, and >= 3 quantity of each item.
-          3. Calculates the total cost of the order.
-             (Use math.isclose to avoid rounding error with floats.)
-
     >>> import math
     >>> david = Customer('David', (44.649, -79.115))
     >>> mcdonalds = Restaurant(name='McDonalds', address='160 Spadina Ave',\
@@ -179,12 +151,12 @@ def total_cost(order: Order) -> float:
 
 
 if __name__ == '__main__':
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'max-line-length': 100,
-    #     'extra-imports': ['python_ta.contracts', 'dataclasses', 'datetime'],
-    #     'disable': ['R1705', 'C0200'],
-    # })
+    import python_ta
+    python_ta.check_all(config={
+        'max-line-length': 100,
+        'extra-imports': ['python_ta.contracts', 'dataclasses', 'datetime'],
+        'disable': ['R1705', 'C0200'],
+    })
 
     import python_ta.contracts
     python_ta.contracts.DEBUG_CONTRACTS = False

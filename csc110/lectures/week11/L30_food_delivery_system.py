@@ -123,6 +123,11 @@ class FoodDeliverySystem:
         """
         order.end_time = timestamp
         order.courier.order = None
+        # order.courier = None
+
+    def get_customers(self) -> list[Customer]:
+        """getter"""
+        return [self._customers[name] for name in self._customers]
 
 
 if __name__ == '__main__':

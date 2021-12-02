@@ -20,6 +20,7 @@ import csv
 import timeit
 from typing import List, Tuple
 import plotly
+import plotly_express as px
 
 
 ###############################################################################
@@ -135,11 +136,11 @@ def visualize_break_diffie_hellman_times(timing_data: List[Tuple[int, float]]) -
     Use a plotly *scatterplot* to visualize the data. You can adapt the code we provided you
     back in Assignment 1, Part 4 (Simple Linear Regression).
     """
-    fig = plotly.scatter(x=[data[0] for data in timing_data], y=[data[0] for data in timing_data])
+    fig = px.scatter(x=[data[0] for data in timing_data], y=[data[1] for data in timing_data])
     fig.show()
 
 
 if __name__ == '__main__':
     import python_ta.contracts
-
-    python_ta.contracts.check_all_contracts()
+    #
+    # python_ta.contracts.check_all_contracts()

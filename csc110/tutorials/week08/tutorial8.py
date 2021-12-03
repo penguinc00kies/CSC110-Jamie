@@ -20,7 +20,7 @@ import csv
 import timeit
 from typing import List, Tuple
 import plotly
-import plotly_express as px
+import plotly.express as px
 
 
 ###############################################################################
@@ -79,8 +79,9 @@ def time_to_break_diffie_hellman(p: int, g: int, g_a: int, g_b: int, number: int
     time_so_far = 0
     secret_a = 1
     for possible_a in range(1, p):
+        time_so_far += timeit.timeit('1 + 1', number=number, globals=globals())
         if pow(g, possible_a, p) == g_a:
-            time_so_far += timeit.timeit('x = 10', number=number, globals=globals())
+            secret_a = possible_a
 
     return time_so_far
 

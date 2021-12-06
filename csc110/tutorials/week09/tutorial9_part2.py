@@ -35,18 +35,27 @@ def convex_hull(points: set[tuple[int, int]]) -> list[tuple[int, int]]:
     >>> convex_hull({(125, 450), (375, 125), (675, 450)})
     [(125, 450), (375, 125), (675, 450), (125, 450)]
     """
-    # sorted_list = [p for p in points]
-    # sorted = False
-    # while not sorted:
-    #     sorted = True
-    #     for i in range(0, len(sorted_list) - 1):
-    #
-    #         if sorted_list[i][0] > sorted_list[i+1][0]:
-    #             sorted_list[i], sorted_list[i + 1] = sorted_list[i + 1], sorted_list[i]
-    #             sorted = False
-    #         elif sorted_list[i][1] > sorted_list[i + 1][1]:
-    #             sorted_list[i], sorted_list[i + 1] = sorted_list[i + 1], sorted_list[i]
-    #             sorted = False
+    hull_list = []
+
+    smallest_point_so_far = (math.inf, math.inf)
+    for point in points:
+        if point[0] < smallest_point_so_far[0]:
+            smallest_point_so_far = point
+        elif point[0] == smallest_point_so_far[0]:
+            if point[1] < smallest_point_so_far[1]:
+                smallest_point_so_far = point
+    hull_list.append(smallest_point_so_far)
+
+    next_point_to_add = next_point((int(smallest_point_so_far[0]),
+                                    int(smallest_point_so_far[1] + 1)),
+                                    smallest_point_so_far, points)
+    hull_list.append(next_point_to_add)
+
+    while hull_list[-1] != smallest_point_so_far:
+        next_point_to_add = next_point(hull_list[-2], hull_list[-1], points)
+        hull_list.append(next_point_to_add)
+
+    return hull_list
 
 
 def leftmost(points: set[tuple[int, int]]) -> tuple[int, int]:
@@ -59,6 +68,13 @@ def leftmost(points: set[tuple[int, int]]) -> tuple[int, int]:
 
     Preconditions:
         - points != set()
+
+    >>> my_set = {(150, 350), (200, 100), (250, 200), (425, 100)}
+    >>> leftmost(my_set)
+    (150, 350)
+    >>> my_set = {(150, 350), (150, 100), (150, 200), (150, 100)}
+    >>> leftmost(my_set)
+    (150, 100)
     """
     leftmost_so_far = (math.inf, math.inf)
     for cord in points:
@@ -92,7 +108,7 @@ def angle_between(a: tuple[int, int], b: tuple[int, int], c: tuple[int, int]) ->
     numerator = (b[0] - a[0]) * (c[0] - a[0]) + (b[1] - a[1]) * (c[1] - a[1])
     denominator = math.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2) * math.sqrt((c[0] - a[0]) ** 2 + (c[1] - a[1]) ** 2)
 
-    return math.acos(min(1.0, max(-1.0, numerator / denominator)))
+    return math.acos(max(-1.0, min(1.0, numerator / denominator)))
 
 
 def next_point(prev: tuple[int, int], curr: tuple[int, int], points: set[tuple[int, int]]) -> tuple[int, int]:
@@ -114,7 +130,15 @@ def next_point(prev: tuple[int, int], curr: tuple[int, int], points: set[tuple[i
     >>> next_point((150, 351), (150, 350), pts)
     (200, 100)
     """
-    wanted_point = curr
+    greatest_angle_so_far = 0
+    furthest_point = ()
+    for point in points:
+        if point != curr:
+            angle = angle_between(curr, prev, point)
+            if greatest_angle_so_far < angle:
+                greatest_angle_so_far = angle
+                furthest_point = point
+    return furthest_point
 
 
 if __name__ == '__main__':

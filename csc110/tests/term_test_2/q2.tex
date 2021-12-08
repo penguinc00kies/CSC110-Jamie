@@ -1,0 +1,178 @@
+% Copyright and Usage Information
+% ===============================
+
+% This file is provided solely for the personal and private use of students
+% taking CSC110 at the University of Toronto St. George campus. All forms of
+% distribution of this code, whether as given or with any changes, are
+% expressly prohibited. For more information on copyright for CSC110 materials,
+% please consult our Course Syllabus.
+
+% This file is Copyright (c) 2021 Mario Badr and Tom Fairgrieve.
+\documentclass{article}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\usepackage[margin=1in]{geometry}
+
+\title{CSC110 Fall 2021: Term Test 2\\
+Question 2 (Analyzing Algorithm Running Time)}
+\author{Jamie Yi}
+\date{Wednesday December 8, 2021}
+
+% Some useful LaTeX commands. You are free to use these or not, and also add your own.
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\begin{document}
+\maketitle
+
+\subsection*{Question 2, Part 1}
+
+\noindent
+We define the function $g: \N \to \R^{\geq 0}$ as $g(n) = 5n^2(n-2)$.
+Consider the following statement:
+
+\[
+g(n) \in \cO(n^4)
+\]
+
+\begin{enumerate}
+
+\item[(a)]
+Rewrite the statement $g(n) \in \cO(n^4)$ by expanding the definition of Big-O.
+
+\bigskip
+
+\textbf{Solution}:
+
+$\exists c, n_0 \in \mathbb{R}^+ $ s.t. $\forall n \in \mathbb{R}$, $n \geq n_0 \implies g(n) \leq c \cdot n^4$
+
+\item[(b)]
+Write the \emph{negation} of the statement from (a), using negation rules to simplify the statement as much as possible.
+
+\bigskip
+
+\textbf{Solution}:
+
+$\forall c, n_0 \in \mathbb{R}^+ $, $\exists n \in \mathbb{R}$ s.t. $n \geq n_0 \wedge g(n) > c \cdot n^4$
+
+\item[(c)]
+Which of statements (a) and (b) is true? Provide a complete proof that justifies your choice.
+
+In your proof, you may not use any properties or theorems about Big-O/Omega/Theta. Work from the expanded statement from (a) or (b).
+
+\bigskip
+
+\textbf{Solution}:
+
+\begin{proof}
+Let $n_0 = 1$
+
+Let $c = 5$
+
+Prove that $g(n) \in \cO(n^4)$
+
+We know, $5 \leq 5n$ (since by definition of Big-O $n \geq 1$)
+
+Then, $5n^3 \leq 5n^4$
+
+Then, $5n^3 - 10n^2 \leq 5n^3 \leq 5n^4$ ($10n^2$ is always positive)
+
+Then, $5n^3 - 10n^2 \leq 5n^4$
+
+Thus, $5n^2(n-2) \leq c \cdot n^4$ as needed
+
+\end{proof}
+
+\end{enumerate}
+
+\subsection*{Question 2, Part 2}
+
+\noindent
+Consider the function below.
+
+\begin{verbatim}
+def f(nums: list[int]) -> list[int]:           # Line 1
+n = len(nums)                              # Line 2
+i = 1                                      # Line 3
+new_list = []                              # Line 4
+while i < n:                               # Line 5
+if nums[i] % 5 == 0:                   # Line 6
+new_list = [i * j for j in nums]   # Line 7
+else:                                  # Line 8
+list.append(new_list, i)           # Line 9
+i = i * 4                              # Line 10
+return new_list                            # Line 11
+\end{verbatim}
+
+\begin{enumerate}
+
+\item[(a)]
+Perform an \emph{upper bound analysis} on the worst-case running time of \texttt{f}.
+The Big-O expression that you conclude should be \emph{tight}, meaning that the worst-case running time should be Theta of this expression, but you are not required to show that here.
+
+\textbf{To simplify your analysis}, you may omit all floors and ceilings in your calculations (if applicable).
+Use ``at most'' or $\leq$ to be explicit about where a step count expression is an upper bound.
+
+\textbf{Solution}:
+
+Treat the first three statements as a block of constant time statements, I will count them as 1 step
+
+While loop analysis:
+
+-let k be the iteration
+
+-let $i_k$ be the value of i at iteration k
+
+-$i_k$ = $4k$
+
+-the loop terminates when $i_k \geq n$
+
+-$4k \geq n$
+
+-$k \geq \frac{n}{4}$
+
+-So the loop will run at most k steps, where k is the closest integer to $\frac{n}{4}$, rounded up, or more specifically $\lceil \frac{n}{4} \rceil$ steps
+
+Of the two possible if-else branches, the first if branch takes more steps, I will count it as taking at most n steps
+
+The last return statement is constant time, and takes 1 step.
+
+Thus 2 constant time steps are taken outside the loop, and the loop itself will take at most $n \lceil \frac{n}{4} \rceil$ steps
+
+So the total runtime of the function is $RC = n \lceil \frac{n}{4} \rceil + 2 \in \cO (n^2)$
+
+
+\item[(b)]
+Perform a \emph{lower bound analysis} on the worst-case running time of \texttt{f}.
+The Omega expression you find should match your Big-O expression from part (a).
+
+\textbf{Hint}: you don't need to try to find an ``exact maximum running-time'' input. \emph{Any} input family whose running time is Omega of (``at least'') the bound you found in part (a) will yield a correct analysis for this part.
+
+\textbf{Solution}:
+
+Let $n \in \mathbb{N}$, let nums be a list of length n containing only integers that 5 divides, that is, all of the integers in nums are multiples of 5
+
+In this case the first if condition in the while loop will trigger every time, taking n steps per iteration of the loop(since every element of nums is cleanly divisible by 5).
+
+The loop itself will always iterate $\lceil \frac{n}{4} \rceil$ times, no matter what is contained in nums
+
+The statements outside the loop will always also be constant time no matter what.
+
+Thus the total number of steps taken is $n \lceil \frac{n}{4} \rceil + 2$, which is $\cO (n^2)$
+
+\end{enumerate}
+\begin{center}
+\textbf{SUBMIT THIS FILE AND THE GENERATED PDF q2.pdf FOR GRADING}
+\end{center}
+\end{document}

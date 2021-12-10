@@ -135,7 +135,6 @@ class AcornSystem:
         >>> acorn_system.get_grades('astudent', '20209')
         [('CLA204H1', 76)]
         """
-        # TODO: implement this function body and remove this todo
         student = self._students[utorid]
 
         term_report = []
@@ -193,8 +192,13 @@ class AcornSystem:
         for id in utorids:
             student = self._students[id]
             sum_score = 0.0
+
             for course in student.grades:
                 sum_score = sum_score + student.grades[course].score
-            student_averages[id] = (sum_score / len(student.grades))
+
+            if len(student.grades) != 0:
+                student_averages[id] = (sum_score / len(student.grades))
+            else:
+                student_averages[id] = 0
 
         return student_averages

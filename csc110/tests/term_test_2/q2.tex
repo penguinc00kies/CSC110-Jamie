@@ -80,7 +80,7 @@ Let $n_0 = 1$
 
 Let $c = 5$
 
-Prove that $g(n) \in \cO(n^4)$
+Prove that $\forall c, n_0 \in \mathbb{R}^+ $, $\exists n \in \mathbb{R}$ s.t. $n \geq n_0 \wedge g(n) > c \cdot n^4$
 
 We know, $5 \leq 5n$ (since by definition of Big-O $n \geq 1$)
 
@@ -142,7 +142,7 @@ While loop analysis:
 
 -$k \geq \frac{n}{4}$
 
--So the loop will run at most k steps, where k is the closest integer to $\frac{n}{4}$, rounded up, or more specifically $\lceil \frac{n}{4} \rceil$ steps
+-So the loop will iterate at most k times, where k is the closest integer to $\frac{n}{4}$, rounded up, or more specifically $\lceil \frac{n}{4} \rceil$ times
 
 Of the two possible if-else branches, the first if branch takes more steps, I will count it as taking at most n steps
 
@@ -165,7 +165,7 @@ Let $n \in \mathbb{N}$, let nums be a list of length n containing only integers 
 
 In this case the first if condition in the while loop will trigger every time, taking n steps per iteration of the loop(since every element of nums is cleanly divisible by 5).
 
-The loop itself will always iterate $\lceil \frac{n}{4} \rceil$ times, no matter what is contained in nums
+The loop itself will always iterate $\lceil \frac{n}{4} \rceil$ times, no matter what is contained in nums(only the length of nums matters)
 
 The statements outside the loop will always also be constant time no matter what.
 

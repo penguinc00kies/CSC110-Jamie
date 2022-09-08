@@ -115,21 +115,21 @@ def test_ffmc_against_ground_truth(sample_data) -> None:
         assert outputs[i].fwi == round(fwi, 1)
 
 
-if __name__ == '__main__':
-    pytest.main(['a3_part4_tests.py'])
-
-    # When you are ready to check your work with python_ta, uncomment the following lines.
-    # (Delete the "#" and space before each line.)
-    # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
-    import python_ta
-    import python_ta.contracts
-    python_ta.contracts.DEBUG_CONTRACTS = False
-    python_ta.contracts.check_all_contracts()
-    python_ta.check_all(config={
-        'allowed-io': ['load_data'],
-        'extra-imports': ['a3_ffwi_system', 'a3_part4', 'pytest'],
-        'max-line-length': 100,
-        'max-args': 6,
-        'max-locals': 25,
-        'disable': ['R1705', 'R0201', 'C0103', 'W0621', 'E9970'],
-    })
+# if __name__ == '__main__':
+#     pytest.main(['a3_part4_tests.py'])
+#
+#     # When you are ready to check your work with python_ta, uncomment the following lines.
+#     # (Delete the "#" and space before each line.)
+#     # IMPORTANT: keep this code indented inside the "if __name__ == '__main__'" block
+#     import python_ta
+#     import python_ta.contracts
+#     python_ta.contracts.DEBUG_CONTRACTS = False
+#     python_ta.contracts.check_all_contracts()
+#     python_ta.check_all(config={
+#         'allowed-io': ['load_data'],
+#         'extra-imports': ['a3_ffwi_system', 'a3_part4', 'pytest'],
+#         'max-line-length': 100,
+#         'max-args': 6,
+#         'max-locals': 25,
+#         'disable': ['R1705', 'R0201', 'C0103', 'W0621', 'E9970'],
+#     })
